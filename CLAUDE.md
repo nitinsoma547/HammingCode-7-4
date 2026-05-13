@@ -276,3 +276,44 @@ free for Aditi as proof of concept.
 
 Answer these in PRs that touch the affected modules, not in a separate
 design doc.
+
+---
+
+## 13. External References (verified May 2026)
+
+Use these upstream repos / docs when wiring the locked stack. Do not
+swap to a fork or community alternative without operator approval.
+
+- Anthropic SDK (TS): https://github.com/anthropics/anthropic-sdk-typescript
+- Claude Agent SDK (TS): https://github.com/anthropics/claude-agent-sdk-typescript
+- Anthropic prompt caching: https://platform.claude.com/docs/en/build-with-claude/prompt-caching
+- FAL.AI JS client: https://github.com/fal-ai/fal-js — package `@fal-ai/client`
+  (the older `@fal-ai/serverless-client` is deprecated; do not use it)
+- Kling 3.0 model page: https://fal.ai/kling-3
+- Supabase: https://github.com/supabase/supabase — backend uses `@supabase/supabase-js`
+- Stripe Node SDK: npm `stripe`, docs at https://docs.stripe.com
+- Resend Node SDK: npm `resend`, docs at https://resend.com/docs
+- Outstand API: https://www.outstand.so/docs — REST only, no official SDK
+  (write our own thin client in `api/src/services/outstand/`)
+- Google Places (Python): https://github.com/googlemaps/google-maps-services-python
+
+---
+
+## 14. Claude Code Subagents (this repo)
+
+Three subagents live in `.claude/agents/`. Invoke them via the `Agent`
+tool by name, or let Claude Code dispatch automatically based on the
+agent's `description`.
+
+- **`brand-voice-reviewer`** (sonnet) — QA pass on any generated asset
+  against the client's `brand_profile`. Run before scheduling to
+  Outstand / Resend / FAL.AI.
+- **`integration-builder`** (sonnet) — scaffolds typed API clients
+  under `api/src/services/<name>/` with consistent error handling,
+  env-var loading, and cost tracking. Knows the locked-stack rules.
+- **`cultural-calendar`** (haiku) — returns festival hooks with dates
+  and per-category copy angles for a given month. Call at the top of
+  every monthly campaign generation, before prompts are constructed.
+
+When adding a fourth subagent, document it here and explain why an
+existing one couldn't cover the use case.
