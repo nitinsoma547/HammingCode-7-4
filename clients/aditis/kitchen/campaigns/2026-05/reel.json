@@ -1,0 +1,46 @@
+{
+  "$comment": "Applied output of the video-producer agent. One Reel per client per month per CLAUDE.md §9. Aditi's Kitchen May 2026 Reel: a dosa coming together on the tava — the most viewable food-process moment for this restaurant. Image-to-video via FAL.AI Kling 3.0 standard tier 5s, ~$0.50. Canonical negative_prompt from kling-image-to-video-prompt skill.",
+  "client_id": "aditis-kitchen",
+  "month": "2026-05",
+  "scheduled_for": "2026-05-22T17:00:00-04:00",
+  "reserved_in_social_calendar": "2026-05-22-reel-dosa-on-tava",
+  "photo_selection": {
+    "$comment": "video-producer scores monthly_intakes.photo_urls. Aditi's intake for May should include several tava + dosa close-ups. Selection criteria: dosa visible mid-cook (golden crust forming, not fully plated), tava texture visible, hand of the cook in frame (acceptable — process not finished-plate), natural light, portrait or near-square aspect for 9:16 Reel framing.",
+    "selected_photo_url": "TODO: operator picks dosa close-up from monthly_intake (prefer tava-with-dosa-spreading shot over finished-plated shot — process Reels outperform plate Reels for this kitchen)",
+    "selection_notes": "If 0 acceptable photos in intake, skip the Reel for May and refund the slot to June. Do NOT submit a placeholder image — burns the FAL.AI $0.50 with no usable output. Backup subject if dosa photos are weak: parippuvada coming out of the karahi (also process, also Kerala-specific)."
+  },
+  "fal_job_spec": {
+    "model": "fal-ai/kling-video/v1/standard/image-to-video",
+    "image_url": "<filled from photo_selection.selected_photo_url>",
+    "prompt": "Subtle steam rising from the dosa on the tava. Gentle ghee shimmer on the crust where it meets the heat. Camera holds still. Natural daylight. No zoom.",
+    "duration_seconds": 5,
+    "cfg_scale": 0.5,
+    "negative_prompt": "extra fingers, distorted hands, melting, AI artifacts, fast zoom, color shift, neon, sparkles, glitter, glow, blur, fish-eye, rotating, extra plates, extra dishes, morphing, magical effects, fake bokeh, warping, oversaturation, motion blur on subject"
+  },
+  "captions_and_overlay": {
+    "ig_caption": "A dosa on the tava. Two minutes start to plate. Tue–Sun · 11am–9pm · Ashburn",
+    "on_screen_text_frames": [
+      { "start_s": 0, "end_s": 1.5, "text": "Mysore Masala Dosa", "style": "serif-700-white-on-dark-strip" },
+      { "start_s": 3, "end_s": 5, "text": "Tue–Sun · Ashburn", "style": "serif-400-white-on-dark-strip" }
+    ],
+    "voiceover": null,
+    "music_mood": "warm-acoustic-no-bass-drop — operator picks from IG's licensed library at upload time; avoid 'desi-trend' sounds that age the Reel within a week"
+  },
+  "cost_tracking": {
+    "estimated_cost_cents": 50,
+    "tier": "fal-ai/kling-video/v1/standard 5s",
+    "operator_approval_required_for": "10s tier (~$1.00) — skip unless festival peak week (Onam, Diwali). May is Akshaya Tritiya, not peak enough for 10s."
+  },
+  "failure_path": [
+    "If Kling output has visible artifacts (extra fingers on the cook's hand, melting dosa edge, color shift on the tava) on 2 consecutive submissions: pick a different source photo, re-submit once more, then skip for the month if still bad. Do not paper over with creative editing — the audience reads AI-slop instantly."
+  ],
+  "validation_checks": {
+    "single_reel_for_month": true,
+    "image_to_video_not_text_to_video": true,
+    "duration_seconds_at_5_cap": true,
+    "negative_prompt_canonical": true,
+    "caption_under_200_chars": true,
+    "do_not_say_check": "no flagged phrases present",
+    "scheduled_for_aligned_with_social_calendar": "2026-05-22T17:00:00-04:00 — matches social-calendar.json slot"
+  }
+}

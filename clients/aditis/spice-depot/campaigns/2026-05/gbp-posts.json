@@ -1,0 +1,81 @@
+{
+  "$comment": "Applied output of the gbp-and-local-seo agent (monthly mode). Four Google Business Profile posts for Aditi's Spice Depot in May 2026 — one per week. NOTE: this client has TWO GBP listings (Ashburn + Herndon). The same four posts are published to BOTH listings; dispatcher fans out on cta_url_by_location. Title ≤ 58 chars, body ≤ 1500 chars. Highest-priority slot = 10% Spring Sale (the active promo); second-highest = Akshaya Tritiya.",
+  "client_id": "aditis-spice-depot",
+  "month": "2026-05",
+  "publishes_to": {
+    "ashburn": { "label": "Ashburn", "address": "43880 Russell Branch Pkwy, Ashburn, VA 20147", "phone": "(703) 555-0142", "phone_tel_uri": "tel:+17035550142" },
+    "herndon": { "label": "Herndon", "address": "2465 Centreville Rd, Herndon, VA 20171", "phone": "(703) 555-0287", "phone_tel_uri": "tel:+17035550287" }
+  },
+  "gbp_posts": [
+    {
+      "slot_id": "gbp-2026-05-04-spring-sale-launch",
+      "kind": "offer",
+      "priority": "highest",
+      "title": "10% off all whole spices — through May 31",
+      "body": "Spring Sale at both shops. 10% off every whole spice on the shelf — green cardamom, black cardamom, cloves, cinnamon sticks, bay leaves, fennel, fenugreek, star anise. Walk in any day, 10 AM – 9 PM. Ashburn: 43880 Russell Branch Pkwy. Herndon: 2465 Centreville Rd. Through May 31.",
+      "cta_button": "CALL_NOW",
+      "cta_url_by_location": {
+        "ashburn": "tel:+17035550142",
+        "herndon": "tel:+17035550287"
+      },
+      "scheduled_for": "2026-05-04T10:00:00-04:00",
+      "image_brief": "Top-down of open whole-spice jars on the shop shelf — cardamom, cinnamon, cloves visible. Or a tight closeup of green cardamom pods spilling from a steel scoop.",
+      "expires_at": "2026-05-31T23:59:00-04:00",
+      "needs_image_from_intake": true
+    },
+    {
+      "slot_id": "gbp-2026-05-11-wedding-season-bulk",
+      "kind": "update",
+      "priority": "medium",
+      "title": "Wedding season — bulk masala + gift baskets",
+      "body": "Indian wedding season is here. Both shops carrying extra: 500g and 1kg masala bags on the shelf, bigger sizes from the back on request. Pre-built gift baskets ready — Idukki cardamom, saffron, Basmati 1121, hand-ground garam masala, ribbon-wrapped. Call the Ashburn shop or stop in to set one aside. Open 10 AM – 9 PM, every day.",
+      "cta_button": "CALL_NOW",
+      "cta_url_by_location": {
+        "ashburn": "tel:+17035550142",
+        "herndon": "tel:+17035550287"
+      },
+      "scheduled_for": "2026-05-11T10:00:00-04:00",
+      "image_brief": "Finished gift basket on the counter — cardamom + saffron + small basmati bag + small garam masala jar, brown ribbon. Or stacked 500g spice bags on the back shelf.",
+      "expires_at": "2026-05-31T23:59:00-04:00",
+      "needs_image_from_intake": true
+    },
+    {
+      "slot_id": "gbp-2026-05-18-akshaya-tritiya-stockup",
+      "kind": "offer",
+      "priority": "high",
+      "title": "Akshaya Tritiya — pantry refresh + fresh-ground masala",
+      "body": "Tuesday May 19 — Akshaya Tritiya. We're grinding the sambar masala that Tuesday afternoon at the back of the shop, so it's fresh on the day itself. Good week to refresh the masala dabba — 18-spice sambar masala $8.99 / 100g, hand-ground garam masala, fresh-ground rasam powder. 10% off all whole spices through May 31. Both shops open 10 AM – 9 PM.",
+      "cta_button": "CALL_NOW",
+      "cta_url_by_location": {
+        "ashburn": "tel:+17035550142",
+        "herndon": "tel:+17035550287"
+      },
+      "scheduled_for": "2026-05-18T10:00:00-04:00",
+      "image_brief": "Fresh-ground sambar masala in a steel bowl, whole spices visible beside it (dried red chilies, coriander seeds, toor dal, fenugreek). Or a refilled masala dabba overhead.",
+      "expires_at": "2026-05-25T23:59:00-04:00",
+      "needs_image_from_intake": true
+    },
+    {
+      "slot_id": "gbp-2026-05-22-memorial-day-hours-tandoori",
+      "kind": "event",
+      "priority": "medium",
+      "title": "Memorial Day weekend hours — open all 3 days",
+      "body": "Saturday 5/23 · 10 AM – 9 PM. Sunday 5/24 · 10 AM – 9 PM. Monday 5/25 · 10 AM – 9 PM. Both shops open. For the grill: tandoori spice blend, Kashmiri chili powder, garam masala for seekh kebabs — front shelf at both stores. 10% off all whole spices runs through May 31. Ashburn 43880 Russell Branch Pkwy · Herndon 2465 Centreville Rd.",
+      "cta_button": "CALL_NOW",
+      "cta_url_by_location": {
+        "ashburn": "tel:+17035550142",
+        "herndon": "tel:+17035550287"
+      },
+      "scheduled_for": "2026-05-22T10:00:00-04:00",
+      "image_brief": "Front shelf with tandoori spice tins + Kashmiri chili powder + garam masala — orderly, warm light. Or a tray of yogurt-marinated chicken next to the dry spice mix.",
+      "expires_at": "2026-05-25T23:59:00-04:00",
+      "needs_image_from_intake": true
+    }
+  ],
+  "notes_for_operator": [
+    "TWO GBP listings (one per location). Each post above publishes to BOTH listings with per-location phone CTA. Until the GBP API client lands in api/src/services/, dispatcher logs these as status=manual_required — operator pastes into the GBP web UI for each shop.",
+    "All four posts use CALL_NOW because the website doesn't yet take online orders. If/when an online store goes live, swap to ORDER for the offer posts.",
+    "The Spring Sale is restated in every post that runs through May 31 — three of the four. This is intentional — GBP card visibility rotates weekly and we want the offer reinforced.",
+    "Akshaya Tritiya post is dated May 18 (one day ahead) on purpose — the festival itself is May 19. Day-of festival post lands behind the planning window."
+  ]
+}

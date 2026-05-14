@@ -1,0 +1,122 @@
+{
+  "$comment": "Applied output of the cultural-calendar agent for May 2026 — pan-South-Asian Loudoun audience. Rich month: Akshaya Tritiya (auspicious shopping), Buddha Purnima, wedding-season peak, plus the US calendar overlays (Mother's Day, Memorial Day weekend). The active promo this month is the 10% Spring Sale running through May 31 — the highest-priority anchor across all channels.",
+  "month": "2026-05",
+  "client_id": "aditis-spice-depot",
+  "primary_community": "pan-south-asian",
+  "seasonal_notes": "Late spring in Loudoun — stock-up-for-summer cooking starts (mango/aam panna, lassi, kulfi, chaat masala for street-style platters in the backyard). Indian wedding season hits its peak this month and runs through June; bulk spice + gift-basket inquiries spike. School winds down mid-June (LCPS last day), so cooking-at-home volume rises.",
+  "hooks": [
+    {
+      "name": "Akshaya Tritiya",
+      "dates": ["2026-05-19"],
+      "lead_window": "2026-05-12 to 2026-05-19",
+      "communities": ["pan-south-asian", "north-indian", "gujarati", "south-indian"],
+      "significance": "Auspicious day for new beginnings — traditionally gold-buying day but more broadly understood as 'whatever you start today multiplies'. Pantry-restock, gift-giving, and stocking the home kitchen are all in-scope for spice shops.",
+      "angles": {
+        "spice-shop": [
+          "Akshaya Tritiya pantry-restock — refresh the masala dabba on an auspicious day",
+          "Fresh-ground sambar masala timed to Tuesday May 19 (the day itself) — fresh on the auspicious day",
+          "Pre-built gift baskets for households starting a new kitchen — wedding gifts, housewarming, college send-offs"
+        ]
+      },
+      "do_not_say": [
+        "celebrate prosperity",
+        "auspicious blessings to all",
+        "shop now for good luck",
+        "an auspicious occasion for the whole family"
+      ]
+    },
+    {
+      "name": "Buddha Purnima",
+      "dates": ["2026-05-22"],
+      "lead_window": "2026-05-15 to 2026-05-22",
+      "communities": ["sri-lankan", "nepali", "bengali", "buddhist"],
+      "significance": "Buddha's birth, enlightenment, and death observed on the same full-moon day. Light hook for a pan-South-Asian spice shop — acknowledge without leading. Some customers will cook vegetarian / sattvic that day.",
+      "angles": {
+        "spice-shop": [
+          "Light acknowledgment — wishes to customers observing, no product push",
+          "If running a vegetarian-feature angle: turmeric, coconut, jaggery, curry leaves all in-stock"
+        ]
+      },
+      "do_not_say": [
+        "find your inner peace this week",
+        "the Buddha within",
+        "spiritual journey"
+      ]
+    },
+    {
+      "name": "Mother's Day (US)",
+      "dates": ["2026-05-10"],
+      "lead_window": "2026-04-27 to 2026-05-10",
+      "communities": ["pan-american", "indian-diaspora"],
+      "significance": "Single-day US calendar event. Light angle for a spice shop — not the brunch-and-bouquet category. The honest play is 'make her the chai she actually drinks' — a build-your-own chai-masala bundle, or the cardamom she's been asking about.",
+      "angles": {
+        "spice-shop": [
+          "Build-your-own chai masala bundle — cardamom + ginger + cinnamon + cloves + peppercorns, gift-wrapped",
+          "The cardamom your mom keeps asking you to bring back from the Indian store — Idukki green, whole pods"
+        ]
+      },
+      "do_not_say": [
+        "celebrate the woman who does everything",
+        "she deserves the best",
+        "treat mom like royalty",
+        "no one cooks like mom"
+      ]
+    },
+    {
+      "name": "Indian wedding season peak",
+      "dates": ["2026-05-01 to 2026-05-31"],
+      "lead_window": "2026-04-15 to 2026-06-15",
+      "communities": ["pan-south-asian"],
+      "significance": "May is peak wedding-season weekends in the diaspora — May–June and Oct–Dec are the two windows. Drives bulk-spice purchases (cooking for guests), gift-basket inquiries (host gifts, return gifts), and large-bag basmati / dal volume.",
+      "angles": {
+        "spice-shop": [
+          "Bulk masala for cooking-for-guests — 500g and 1kg sizes available on the shelf, more in the back",
+          "Wedding gift basket — Idukki cardamom + saffron + Basmati 1121 + hand-ground garam masala, ribbon-wrapped",
+          "Hosting tip: pre-grind the biryani masala on Wednesday for the Saturday function — we'll do it for you Tuesday"
+        ]
+      },
+      "do_not_say": [
+        "celebrate love this season",
+        "your big day deserves the best",
+        "the spices of romance"
+      ]
+    },
+    {
+      "name": "Memorial Day weekend",
+      "dates": ["2026-05-23", "2026-05-24", "2026-05-25"],
+      "lead_window": "2026-05-15 to 2026-05-25",
+      "communities": ["pan-american", "indian-diaspora"],
+      "significance": "Three-day US weekend, outdoor-grilling peak. Peripheral but real angle for a spice shop: tandoori marinades, garam masala for kebabs, achaari rubs — the desi backyard grill exists and it needs the right spices.",
+      "angles": {
+        "spice-shop": [
+          "Tandoori spice blend + Kashmiri chili powder for the grill — desi backyard, real fire",
+          "Garam masala for the kebab marinade — 2 tbsp + yogurt + ginger-garlic = 45-minute marinade",
+          "Memorial Day weekend hours: open all three days at both stores"
+        ]
+      },
+      "do_not_say": [
+        "kick off summer with us",
+        "the unofficial start of summer",
+        "fire up the grill"
+      ]
+    },
+    {
+      "name": "Stock-up-for-summer (seasonal)",
+      "dates": ["2026-05-01 to 2026-05-31"],
+      "lead_window": "2026-05-01 to 2026-06-30",
+      "communities": ["pan-south-asian"],
+      "significance": "Seasonal note, not a festival — summer cooking shifts toward cooling preparations. Chaat masala, kala namak, amchur (dry mango), kulfi-making essentials (cardamom, saffron, pistachio), lassi spices (cardamom, rose water).",
+      "angles": {
+        "spice-shop": [
+          "Summer pantry refresh — chaat masala, kala namak, amchur on the front shelf",
+          "Kulfi season starts — saffron, green cardamom, pistachio kernels in the back fridge",
+          "Mango achaar mustard + fenugreek + kashmiri chili in-store as the early-mango shipment lands"
+        ]
+      },
+      "do_not_say": [
+        "beat the heat with us",
+        "summer flavors that wow"
+      ]
+    }
+  ]
+}

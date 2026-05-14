@@ -1,0 +1,102 @@
+{
+  "$comment": "Applied output of the brand-strategist agent. Extracted from clients/aditis/kitchen/site/content/brand.ts — single source of truth for the marketing site. This is the default-target-audience client (South Asian SMB, Loudoun), so desi-diaspora-voice applies fully and whatsapp_broadcast is enabled.",
+  "client_id": "aditis-kitchen",
+  "business_name": "Aditi's Kitchen",
+  "parallel_label": "അദിതിയുടെ അടുക്കള",
+  "category": "south-indian-veg-restaurant",
+  "primary_community": "south-indian-kerala",
+  "tagline": "Real South Indian. Fresh dosas. Open Tuesday through Sunday.",
+  "short_intro": "A family-run kitchen in Ashburn — dosas on a hot tava, idli steamed in the morning, filter coffee poured strong. Recipes from Aditi's amma, kept the same way for twenty years.",
+  "tone_keywords": ["warm", "family-run", "specific", "Kerala-rooted"],
+  "signature_dishes": [
+    {
+      "name": "Mysore Masala Dosa",
+      "price": "$11.99",
+      "why_signature": "16-hour fermented batter, fresh-ground red masala, ghee-roasted on a hot tava — the dish people drive in from Sterling for"
+    },
+    {
+      "name": "Ghee Roast",
+      "price": "$10.99",
+      "why_signature": "crisp golden edges, served with three chutneys and sambar — the simplest test of whether a kitchen knows what it's doing"
+    },
+    {
+      "name": "Parippuvada",
+      "price": "$4.99",
+      "why_signature": "Kerala lentil fritters, fried every two hours in small batches — the snack that runs out by 7pm on most evenings"
+    }
+  ],
+  "languages": ["English", "Malayalam"],
+  "cultural_hooks": ["Onam", "Vishu", "Akshaya Tritiya", "Diwali"],
+  "do_not_say": [
+    "delicious authentic cuisine",
+    "best in town",
+    "you'll love it",
+    "come check us out",
+    "experience the flavor",
+    "a culinary journey",
+    "true taste of India",
+    "made with love",
+    "an explosion of flavor",
+    "feast for the senses"
+  ],
+  "visual_palette": {
+    "primary": "#2F5D3A",
+    "accent": "#C97B3A",
+    "neutral": "#F5EFE6",
+    "ink": "#1F2421",
+    "notes": "Kerala green primary (the brand anchor — banana leaf, palm, monsoon backdrop), saffron accent for festival pushes only, warm offwhite ground, dark green-black ink."
+  },
+  "cultural_accent": "banana-leaf",
+  "locations": [
+    {
+      "label": "Ashburn",
+      "address": "43880 Russell Branch Pkwy, Ashburn, VA 20147",
+      "address_todo": "operator: confirm street address with owner",
+      "phone": "(703) 555-0142",
+      "phone_todo": "operator: replace placeholder with real phone",
+      "hours": {
+        "mon": null,
+        "tue": "11:00 AM – 9:00 PM",
+        "wed": "11:00 AM – 9:00 PM",
+        "thu": "11:00 AM – 9:00 PM",
+        "fri": "11:00 AM – 9:00 PM",
+        "sat": "11:00 AM – 9:00 PM",
+        "sun": "11:00 AM – 9:00 PM"
+      },
+      "closed_days": ["Monday"],
+      "maps_url": null
+    }
+  ],
+  "voice_examples": {
+    "do_use": [
+      "Tue–Sun 11am–9pm, closed Mondays",
+      "16-hour fermented batter, no shortcuts",
+      "amma's recipe, kept the same way for twenty years",
+      "filter coffee, pulled strong, in a steel tumbler",
+      "parippuvada fries every two hours — runs out by 7pm",
+      "Kerala-style avial, coconut from the bag, not from a can"
+    ],
+    "do_not_use": [
+      "authentic South Indian flavors",
+      "experience the taste of Kerala",
+      "we offer a wide variety",
+      "come try our delicious dosa"
+    ]
+  },
+  "channels_in_scope": {
+    "facebook": true,
+    "instagram": true,
+    "google_business_profile": true,
+    "email": true,
+    "whatsapp_broadcast": true,
+    "whatsapp_note": "Aditi's audience IS WhatsApp-native (South Asian Loudoun community). Default ON. Operator forwards the broadcast message; client copy-pastes to their broadcast list.",
+    "tiktok": "out of scope v1",
+    "ads": "out of scope (CLAUDE.md §1: no paid ads, organic only)"
+  },
+  "competitive_lens": "Aditi's edge over the half-dozen North-Indian-leaning restaurants in Ashburn is the Kerala-specific anchor — parippuvada, avial, ghee roast, filter coffee in a tumbler. Don't generic-ify it. The Malayalee + Tamil diaspora in Loudoun will drive 40 minutes for this; the broader desi audience finds it via dosa.",
+  "links": {
+    "instagram": null,
+    "facebook": null,
+    "google_maps": null
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "$comment": "Applied output of the email-marketer agent. Aditi's Kitchen monthly Resend blast for May 2026. Anchored on Akshaya Tritiya sadya — the biggest desi-audience hook of the month. Sends 7 days before the festival (Tue May 12, 10am) per the channel norm for festival emails. Subject ≤60 chars, 3 variants, preheader ≤90 chars, plain-text fallback. to_emails is empty — operator injects the audience list before send.",
+  "client_id": "aditis-kitchen",
+  "month": "2026-05",
+  "send_at": "2026-05-12T10:00:00-04:00",
+  "from_name": "Aditi's Kitchen",
+  "from_email": "hello@aditiskitchen.com",
+  "reply_to": "hello@aditiskitchen.com",
+  "subject": "Akshaya Tritiya sadya — Fri May 19, two seatings",
+  "subject_variants": [
+    "Sadya on Friday May 19 — 18 items, banana leaf, $24",
+    "Akshaya Tritiya at Aditi's — pre-book your seat"
+  ],
+  "preheader": "Pre-book only — 30 plates per seating, 12pm and 2pm. Call to reserve.",
+  "to_emails": [],
+  "header_image_brief": "Sadya laid out on a banana leaf — overhead crop. Use flyer/akshaya-tritiya-sadya.png if no fresh photo is available. Single image, no collage. If neither works, fall back to a Kerala-green type block with the headline.",
+  "body_blocks": [
+    {
+      "type": "heading",
+      "text": "Akshaya Tritiya sadya — Friday May 19"
+    },
+    {
+      "type": "paragraph",
+      "text": "We're putting out a full banana-leaf sadya for Akshaya Tritiya. Eighteen items on the leaf, payasam included, the rice mound at the center, the way amma used to set it down."
+    },
+    {
+      "type": "heading_secondary",
+      "text": "On the leaf this year"
+    },
+    {
+      "type": "list",
+      "label": null,
+      "items": [
+        "Rice + sambar + rasam + curd",
+        "Avial · Kerala-style mixed vegetable in coconut",
+        "Olan · ash gourd + cowpea + coconut milk",
+        "Thoran (cabbage) · pachadi · kichadi",
+        "Parippu + ghee · pappadam · banana chips",
+        "Mango pickle · ginger pickle · two chutneys",
+        "Palada pradhaman as the closer"
+      ]
+    },
+    {
+      "type": "heading_secondary",
+      "text": "Two seatings, pre-book only"
+    },
+    {
+      "type": "paragraph",
+      "text": "12pm and 2pm. Thirty plates per seating. $24 a plate. Once it's full, we close the list — we cook for the seating, not for walk-ins. The kitchen is one tava and one team; this is the only way the sadya goes out the way it should."
+    },
+    {
+      "type": "cta",
+      "label": "Call to reserve",
+      "url": "tel:+17035550142"
+    },
+    {
+      "type": "footer_note",
+      "text": "Aditi's Kitchen · 43880 Russell Branch Pkwy, Ashburn VA 20147 · Tue–Sun 11am–9pm · (703) 555-0142"
+    }
+  ],
+  "plain_text_fallback": "Akshaya Tritiya sadya — Friday May 19\n\nWe're putting out a full banana-leaf sadya for Akshaya Tritiya. Eighteen items on the leaf, payasam included, the rice mound at the center, the way amma used to set it down.\n\n=== On the leaf this year ===\n- Rice + sambar + rasam + curd\n- Avial · Kerala-style mixed vegetable in coconut\n- Olan · ash gourd + cowpea + coconut milk\n- Thoran (cabbage) · pachadi · kichadi\n- Parippu + ghee · pappadam · banana chips\n- Mango pickle · ginger pickle · two chutneys\n- Palada pradhaman as the closer\n\n=== Two seatings, pre-book only ===\n12pm and 2pm. Thirty plates per seating. $24 a plate.\n\nOnce it's full, we close the list — we cook for the seating, not for walk-ins. The kitchen is one tava and one team; this is the only way the sadya goes out the way it should.\n\nCall to reserve: (703) 555-0142\n\nAditi's Kitchen · 43880 Russell Branch Pkwy, Ashburn VA 20147 · Tue–Sun 11am–9pm",
+  "validation_checks": {
+    "subject_length": 49,
+    "subject_under_60": true,
+    "preheader_length": 70,
+    "preheader_under_90": true,
+    "subject_variants_count": 3,
+    "single_primary_cta": true,
+    "plain_text_fallback_present": true,
+    "do_not_say_check": "no flagged phrases present",
+    "no_emoji_in_subject": true,
+    "send_time": "Tue 10am local, 7 days before Akshaya Tritiya — matches channel norm for festival emails (7–10 days lead)",
+    "body_word_count_approx": 195
+  }
+}

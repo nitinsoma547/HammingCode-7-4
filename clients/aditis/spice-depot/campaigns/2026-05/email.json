@@ -1,0 +1,76 @@
+{
+  "$comment": "Applied output of the email-marketer agent. Aditi's Spice Depot monthly Resend blast for May 2026. Anchored on Akshaya Tritiya weekend (May 19, Tuesday) + the 10% Spring Sale running through May 31. Sends Tue May 12 10 AM — 7 days lead before the festival, matching the channel norm (festival emails 7-10 days early). Both store addresses + phones in the footer per the multi-location hard rule.",
+  "client_id": "aditis-spice-depot",
+  "month": "2026-05",
+  "send_at": "2026-05-12T10:00:00-04:00",
+  "from_name": "Aditi's Spice Depot",
+  "from_email": "hello@aditisspicedepot.com",
+  "reply_to": "hello@aditisspicedepot.com",
+  "subject": "Akshaya Tritiya weekend + 10% off whole spices",
+  "subject_variants": [
+    "10% off whole spices through May 31 — both shops",
+    "Sambar masala fresh-ground for Akshaya Tritiya Tuesday"
+  ],
+  "preheader": "Tuesday May 19 grind day — sambar masala, garam masala. Walk in any day, 10–9.",
+  "header_image_brief": "Tight overhead of whole green cardamom pods piled on dark wood, warm natural light. Or a steel scoop spilling cardamom + coriander seeds onto a wooden board. Single restrained crop. If no fresh photo from intake: type-led header block in saffron #B85A2C on offwhite — 'Akshaya Tritiya · May 19' serif headline.",
+  "body_blocks": [
+    {
+      "type": "heading",
+      "text": "Akshaya Tritiya weekend + Spring Sale"
+    },
+    {
+      "type": "paragraph",
+      "text": "Tuesday May 19 is Akshaya Tritiya — a day for new beginnings, a good week to refresh the masala dabba. And it's a Tuesday, which means the sambar masala is being ground at the back of the shop that afternoon: 18 spices, hand-ground, the freshest batch of the year goes on the Wednesday shelf."
+    },
+    {
+      "type": "heading_secondary",
+      "text": "10% off all whole spices — through May 31"
+    },
+    {
+      "type": "paragraph",
+      "text": "Both shops. Green cardamom, black cardamom, cloves, cinnamon sticks, bay leaves, fennel seeds, fenugreek, star anise — every whole spice on the shelf, 10% off through the end of the month."
+    },
+    {
+      "type": "heading_secondary",
+      "text": "On the shelf this month"
+    },
+    {
+      "type": "list",
+      "label": null,
+      "items": [
+        "Idukki green cardamom — whole pods, Bangalore market grade · $14.99 / 100g",
+        "Hand-ground sambar masala — 18 spices, fresh every Tuesday · $8.99 / 100g",
+        "Basmati 1121 — aged 18 months, 8mm+ grain · $24.99 / 10 lb",
+        "Wedding-season gift baskets — call to set one aside"
+      ]
+    },
+    {
+      "type": "cta",
+      "label": "Call the Ashburn shop",
+      "url": "tel:+17035550142"
+    },
+    {
+      "type": "footer_note",
+      "text": "Aditi's Spice Depot · open 10 AM – 9 PM every day · Ashburn: 43880 Russell Branch Pkwy, (703) 555-0142 · Herndon: 2465 Centreville Rd, (703) 555-0287"
+    }
+  ],
+  "plain_text_fallback": "Akshaya Tritiya weekend + Spring Sale\n\nTuesday May 19 is Akshaya Tritiya — a day for new beginnings, a good week to refresh the masala dabba. And it's a Tuesday: sambar masala is being ground at the back of the shop that afternoon. 18 spices, hand-ground. The Wednesday-shelf bags will be the freshest batch of the year.\n\n=== 10% off all whole spices — through May 31 ===\nBoth shops. Green cardamom, black cardamom, cloves, cinnamon sticks, bay leaves, fennel, fenugreek, star anise.\n\n=== On the shelf this month ===\n- Idukki green cardamom — whole pods, Bangalore market grade · $14.99 / 100g\n- Hand-ground sambar masala — 18 spices, fresh every Tuesday · $8.99 / 100g\n- Basmati 1121 — aged 18 months, 8mm+ grain · $24.99 / 10 lb\n- Wedding-season gift baskets — call to set one aside\n\nCall the Ashburn shop: (703) 555-0142\n\nAditi's Spice Depot · open 10 AM - 9 PM every day\nAshburn: 43880 Russell Branch Pkwy, Ashburn VA 20147 · (703) 555-0142\nHerndon: 2465 Centreville Rd, Herndon VA 20171 · (703) 555-0287",
+  "validation_checks": {
+    "subject_length": 48,
+    "subject_under_60": true,
+    "preheader_length": 73,
+    "preheader_under_90": true,
+    "single_primary_cta": true,
+    "plain_text_fallback_present": true,
+    "do_not_say_check": "no flagged phrases present",
+    "send_time": "Tue 10am local — matches channel norm for retail",
+    "festival_lead": "7 days before Akshaya Tritiya (May 19) — within the 7-10 day window per email-marketer.md",
+    "both_locations_in_footer": true
+  },
+  "notes_for_operator": [
+    "Both Ashburn + Herndon phones live in the footer per the multi-location hard rule.",
+    "Primary CTA is the Ashburn phone (the shop with the grinder + the larger inventory). If Herndon owner wants their phone as primary instead, swap in line 39 (the cta block).",
+    "Word count of body paragraphs ≈ 140 words — within the 80-250 target.",
+    "from_email = hello@aditisspicedepot.com is a placeholder until the domain is purchased + Resend DNS is verified. Operator confirms before send."
+  ]
+}

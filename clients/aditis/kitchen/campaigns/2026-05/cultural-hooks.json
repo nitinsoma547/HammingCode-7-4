@@ -1,0 +1,103 @@
+{
+  "$comment": "Applied output of the cultural-calendar agent for May 2026 — Kerala-leaning South Indian veg restaurant. Hero hook = Akshaya Tritiya (May 19) which is the most relevant May festival for the Kerala/Tamil/Telugu/North Indian diaspora that drives this restaurant's traffic. Mother's Day is a secondary US-calendar hook. AAPI Heritage Month is small angle. Indian wedding season runs through May for catering inquiries.",
+  "month": "2026-05",
+  "client_id": "aditis-kitchen",
+  "primary_community": "south-indian-kerala",
+  "seasonal_notes": "Late spring in Loudoun — Indian wedding season peaks (May–June), school is winding down (LCPS last day mid-June 2026), and Akshaya Tritiya is the spring's commercial concentrator for South Asian businesses. Weather warm enough for outdoor pickup; not yet the summer mango-season window.",
+  "hooks": [
+    {
+      "name": "Akshaya Tritiya",
+      "dates": ["2026-05-19"],
+      "lead_window": "2026-05-08 to 2026-05-19",
+      "communities": ["south-indian-kerala", "south-indian-tamil", "north-indian", "gujarati"],
+      "significance": "Auspicious day for new beginnings, gold purchases, business starts. In Kerala specifically, families often eat a special sadya or Kerala-traditional meal. Strong commercial-intensity day — second only to Onam for a Kerala-leaning restaurant.",
+      "angles": {
+        "restaurant": [
+          "Akshaya Tritiya sadya — full banana-leaf feast, 18 items, $24/plate, two seatings",
+          "Pre-book the sadya 1 week ahead — limit 30 plates per seating",
+          "Kerala-style payasam (boli, palada pradhaman, ada pradhaman) as the closer; one per seating, named by day"
+        ]
+      },
+      "do_not_say": [
+        "celebrate prosperity and new beginnings",
+        "auspicious feast for an auspicious day",
+        "wealth, gold, and good fortune",
+        "embrace the spirit of Akshaya Tritiya"
+      ]
+    },
+    {
+      "name": "Mother's Day",
+      "dates": ["2026-05-10"],
+      "lead_window": "2026-04-30 to 2026-05-10",
+      "communities": ["pan-american", "pan-south-asian"],
+      "significance": "US-calendar hook; South Indian families often do a Sunday lunch out instead of brunch. Secondary to Akshaya Tritiya for this client — don't blow the email on Mother's Day when the bigger spend is Akshaya Tritiya nine days later.",
+      "angles": {
+        "restaurant": [
+          "Sunday lunch with amma — regular menu, no upcharge, no pre-fixe gimmick",
+          "Filter coffee + parippuvada combo for the table; reminds the elders of home",
+          "Walk-ins all day; no reservation required (run the regular Sunday flow)"
+        ]
+      },
+      "do_not_say": [
+        "treat your mom like royalty",
+        "she deserves it",
+        "celebrate the woman who does everything"
+      ]
+    },
+    {
+      "name": "AAPI Heritage Month",
+      "dates": ["2026-05-01 to 2026-05-31"],
+      "lead_window": "2026-05-01 to 2026-05-31",
+      "communities": ["aapi", "pan-south-asian"],
+      "significance": "Cultural recognition month; Aditi's is AAPI-owned, the operator can lean into it lightly but the diaspora audience won't react to a 'celebrating AAPI Heritage Month' framing — they want the food. Use it as a small post or a thank-you nod, not a campaign pillar.",
+      "angles": {
+        "restaurant": [
+          "Light acknowledgement post: 'small Kerala kitchen, AAPI Heritage Month' + one dish photo",
+          "Skip if it would replace an Akshaya Tritiya slot"
+        ]
+      },
+      "do_not_say": [
+        "celebrating AAPI voices this month",
+        "honoring our heritage",
+        "a melting pot of flavors",
+        "diversity through food"
+      ]
+    },
+    {
+      "name": "Buddha Purnima",
+      "dates": ["2026-05-22"],
+      "lead_window": "2026-05-18 to 2026-05-22",
+      "communities": ["sri-lankan", "nepali", "buddhist-indian", "sikkimese"],
+      "significance": "Vesak / Buddha Purnima. Relevant to a small subset of the customer base. Light vegetarian-only angle (already vegetarian — no menu change). Skip if calendar is already full.",
+      "angles": {
+        "restaurant": [
+          "Quiet note in a Sunday post — 'fully vegetarian, every day' — nothing more"
+        ]
+      },
+      "do_not_say": [
+        "honor the Buddha's path",
+        "find peace through plant-based eating",
+        "spiritual cuisine"
+      ]
+    },
+    {
+      "name": "Indian wedding season",
+      "dates": ["2026-05-01 to 2026-06-30"],
+      "lead_window": "2026-04-15 to 2026-06-15",
+      "communities": ["pan-south-asian"],
+      "significance": "May–June is peak North Indian + South Indian wedding season in the Loudoun diaspora. Catering inquiries spike — small mehndi/sangeet snack packs, weekday-lunch sadya orders, sweets boxes. Aditi's isn't a full caterer in v1 but should signal availability for 30–60 person small orders.",
+      "angles": {
+        "restaurant": [
+          "Mehndi/sangeet snack tray — parippuvada + bonda + chutney boxes, 24h notice, 30+ people",
+          "Tray pickup, not delivery — the kitchen is one tava, not a catering operation",
+          "Sadya catering: $22/head for 30+, banana leaf included, two days' notice"
+        ]
+      },
+      "do_not_say": [
+        "make your big day unforgettable",
+        "wedding food fit for a queen",
+        "we cater to all your needs"
+      ]
+    }
+  ]
+}

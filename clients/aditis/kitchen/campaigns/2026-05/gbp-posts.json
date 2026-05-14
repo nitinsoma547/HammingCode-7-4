@@ -1,0 +1,61 @@
+{
+  "$comment": "Applied output of the gbp-and-local-seo agent (monthly mode). Four Google Business Profile posts for Aditi's Kitchen in May 2026, one per week. Each respects GBP format limits (title ≤ 58 chars, body ≤ 1500 chars) and uses CALL_NOW as the cta_button since the website doesn't take online orders yet. Memorial Day note: kitchen is closed Mondays, so Memorial Day Monday (May 25) is a regular closed day; we call it out so customers don't drive over.",
+  "client_id": "aditis-kitchen",
+  "month": "2026-05",
+  "gbp_posts": [
+    {
+      "slot_id": "gbp-2026-05-06-mothers-day-brunch",
+      "kind": "event",
+      "title": "Mother's Day Sunday — regular menu, bring amma",
+      "body": "Sunday May 10 — Mother's Day at the kitchen. The regular menu, the regular hours (11am–9pm), no pre-fixe, no upcharge. Filter coffee on us at the end of the meal. Walk in any time. (703) 555-0142. 43880 Russell Branch Pkwy, Ashburn.",
+      "cta_button": "CALL_NOW",
+      "cta_url": "tel:+17035550142",
+      "scheduled_for": "2026-05-06T10:00:00-04:00",
+      "image_brief": "Filter coffee in a steel tumbler with the saucer, soft warm light. Or: a dosa-and-coffee combo from the regular menu. No staged 'mom-and-daughter' framing.",
+      "expires_at": "2026-05-10T23:59:00-04:00",
+      "needs_image_from_intake": true
+    },
+    {
+      "slot_id": "gbp-2026-05-13-akshaya-tritiya-sadya",
+      "kind": "offer",
+      "title": "Akshaya Tritiya sadya — Fri May 19, pre-book",
+      "body": "Banana-leaf sadya for Akshaya Tritiya — Friday May 19. Eighteen items, payasam included. Two seatings: 12pm and 2pm. Thirty plates per seating, pre-book only. $24 per plate. Call (703) 555-0142 to reserve. 43880 Russell Branch Pkwy, Ashburn.",
+      "cta_button": "CALL_NOW",
+      "cta_url": "tel:+17035550142",
+      "scheduled_for": "2026-05-13T10:00:00-04:00",
+      "image_brief": "A full sadya on a banana leaf — overhead, the leaf curving across the frame, rice mound center, 12+ small portions of curries / pickle / pappadam around the rim. Natural light. Real banana leaf. No 'food porn' over-saturation.",
+      "expires_at": "2026-05-19T23:59:00-04:00",
+      "needs_image_from_intake": true
+    },
+    {
+      "slot_id": "gbp-2026-05-18-akshaya-tritiya-day-before",
+      "kind": "event",
+      "title": "Akshaya Tritiya sadya — tomorrow, last seats",
+      "body": "Friday May 19 — Akshaya Tritiya sadya at the kitchen. A few seats left at the 2pm seating; 12pm is sold out. Palada pradhaman on the leaf for the closer. $24/plate. Call to reserve: (703) 555-0142. 43880 Russell Branch Pkwy, Ashburn.",
+      "cta_button": "CALL_NOW",
+      "cta_url": "tel:+17035550142",
+      "scheduled_for": "2026-05-18T10:00:00-04:00",
+      "image_brief": "Steel kalam of payasam mid-pour into a smaller serving bowl. Or: the banana leaf set with rice + payasam already placed, the rest of the items being added in the background.",
+      "expires_at": "2026-05-19T23:59:00-04:00",
+      "needs_image_from_intake": true
+    },
+    {
+      "slot_id": "gbp-2026-05-25-memorial-day-hours-note",
+      "kind": "update",
+      "title": "Memorial Day weekend — closed Mon as usual",
+      "body": "Memorial Day weekend hours: open Tue–Sun 11am–9pm as always, including Saturday 5/23 and Sunday 5/24. Closed Monday 5/25 — we're closed every Monday, Memorial Day is no different. Parippuvada fries every two hours, runs out by 7pm. (703) 555-0142. 43880 Russell Branch Pkwy, Ashburn.",
+      "cta_button": "CALL_NOW",
+      "cta_url": "tel:+17035550142",
+      "scheduled_for": "2026-05-25T10:00:00-04:00",
+      "image_brief": "Storefront shot in daylight, the kitchen sign visible. Or: an interior shot of the dining room with two tables set. No people facing camera.",
+      "expires_at": "2026-05-31T23:59:00-04:00",
+      "needs_image_from_intake": true
+    }
+  ],
+  "notes_for_operator": [
+    "All four posts share the (703) 555-0142 phone CTA. Once the website adds online reservation, swap the Akshaya Tritiya post to a LEARN_MORE with the reservation link.",
+    "Monday 5/25 (Memorial Day) is a regular closed Monday for this kitchen. The GBP update post calls it out so customers don't drive in expecting a holiday opening.",
+    "The 5/18 GBP 'last seats' post duplicates the social post's language intentionally — GBP rotates weekly, so the urgency lands at search time too.",
+    "Until GBP API client is built, operator copy-pastes title + body into business.google.com manually. Dispatch logs as 'manual_required'."
+  ]
+}

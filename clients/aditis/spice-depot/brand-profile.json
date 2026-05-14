@@ -1,0 +1,137 @@
+{
+  "$comment": "Applied output of the brand-strategist agent. Aditi's Spice Depot is our DEFAULT target client — South Asian SMB, pan-South-Asian customer base, two Loudoun locations. Sourced from clients/aditis/spice-depot/site/content/brand.ts (single source of truth for the website + campaigns).",
+  "client_id": "aditis-spice-depot",
+  "business_name": "Aditi's Spice Depot",
+  "parallel_label": "अदिति का मसाला घर",
+  "category": "spice-and-indian-grocery",
+  "primary_community": "pan-south-asian",
+  "secondary_audiences": [
+    "Loudoun-area Indian-American families (B2C — pantry-restock, daily cooking)",
+    "Loudoun-area home cooks across communities curious about Indian cooking (B2C — entry SKUs, recipes-on-the-shelf)",
+    "wedding hosts + festival hosts (B2C — bulk + gift baskets)"
+  ],
+  "tagline": "Whole spices, fresh ground. Two Loudoun locations.",
+  "short_intro": "We grind cardamom, cumin, and coriander in the back of the shop — never more than two days old. Two stores: Ashburn and Herndon, open every day.",
+  "tone_keywords": ["warm", "specific", "owner-operated", "ingredient-led"],
+  "featured_products": [
+    {
+      "name": "Idukki green cardamom (whole)",
+      "price": "$14.99 / 100g",
+      "why_signature": "Bangalore market grade, not export — the pods you'd pick yourself if you walked the market"
+    },
+    {
+      "name": "Hand-ground sambar masala",
+      "price": "$8.99 / 100g",
+      "why_signature": "Ground fresh every Tuesday at the back of the shop, 18 spices, the smell of Tuesday afternoon"
+    },
+    {
+      "name": "Basmati rice 1121 (long grain)",
+      "price": "$24.99 / 10 lb",
+      "why_signature": "Aged 18 months, 8mm-plus grain — the rice that doesn't break when you make biryani"
+    }
+  ],
+  "languages": ["English", "Hindi", "Tamil", "Telugu", "Malayalam", "Punjabi"],
+  "cultural_hooks_relevant": [
+    "Pongal / Makar Sankranti (Jan)",
+    "Holi (Mar) — thandai masala, gujiya ingredients",
+    "Ugadi / Gudi Padwa / Vishu / Tamil New Year (Mar–Apr)",
+    "Ramadan + Eid al-Fitr — shifts ~11 days earlier each year",
+    "Akshaya Tritiya (Apr / May) — auspicious shopping day",
+    "Indian wedding season peak (Apr–Jun, Oct–Dec)",
+    "Onam (Aug / Sep) — sadya ingredients",
+    "Navratri / Durga Puja (Sep / Oct) — fasting-friendly + Bengali",
+    "Karva Chauth (Oct / Nov) — sargi specials",
+    "Diwali (Oct / Nov) — peak commercial week of the year",
+    "Bhai Dooj / Govardhan Puja",
+    "Chhath Puja (Nov)"
+  ],
+  "do_not_say": [
+    "delicious authentic cuisine",
+    "best in town",
+    "you'll love it",
+    "premium quality spices",
+    "the finest ingredients",
+    "experience the flavor",
+    "a culinary journey",
+    "we use only the finest",
+    "made with love",
+    "an explosion of flavor",
+    "feast for the senses",
+    "true taste of India",
+    "come check us out"
+  ],
+  "visual_palette": {
+    "primary": "#B85A2C",
+    "accent": "#5C7A3A",
+    "neutral": "#F5EFE6",
+    "ink": "#1F2421",
+    "notes": "Earthy saffron primary (warm coral, not chili-red), deep olive accent (the dried bay-leaf green, not Kelly), warm offwhite ground shared with the rest of the design system. Cultural accent = rangoli line motif at 15-18% opacity."
+  },
+  "cultural_accent": "rangoli",
+  "locations": [
+    {
+      "label": "Ashburn",
+      "address": "43880 Russell Branch Pkwy, Ashburn, VA 20147",
+      "phone": "(703) 555-0142",
+      "phone_tel_uri": "tel:+17035550142",
+      "hours": {
+        "mon": "10:00 AM – 9:00 PM",
+        "tue": "10:00 AM – 9:00 PM",
+        "wed": "10:00 AM – 9:00 PM",
+        "thu": "10:00 AM – 9:00 PM",
+        "fri": "10:00 AM – 9:00 PM",
+        "sat": "10:00 AM – 9:00 PM",
+        "sun": "10:00 AM – 9:00 PM"
+      },
+      "$todo_phone": "operator to confirm real Ashburn phone number with owner",
+      "$todo_maps_url": "paste Google Maps share URL once GBP is verified"
+    },
+    {
+      "label": "Herndon",
+      "address": "2465 Centreville Rd, Herndon, VA 20171",
+      "phone": "(703) 555-0287",
+      "phone_tel_uri": "tel:+17035550287",
+      "hours": {
+        "mon": "10:00 AM – 9:00 PM",
+        "tue": "10:00 AM – 9:00 PM",
+        "wed": "10:00 AM – 9:00 PM",
+        "thu": "10:00 AM – 9:00 PM",
+        "fri": "10:00 AM – 9:00 PM",
+        "sat": "10:00 AM – 9:00 PM",
+        "sun": "10:00 AM – 9:00 PM"
+      },
+      "$todo_phone": "operator to confirm real Herndon phone number with owner",
+      "$todo_maps_url": "paste Google Maps share URL once GBP is verified"
+    }
+  ],
+  "promo_active": {
+    "label": "Spring Sale",
+    "message": "10% off all whole spices through May 31."
+  },
+  "voice_examples": {
+    "do_use": [
+      "Idukki green cardamom — whole pods, Bangalore market grade",
+      "ground fresh every Tuesday at the back of the shop",
+      "aged 18 months, 8mm-plus grain — doesn't break in biryani",
+      "two stores, Ashburn and Herndon, open every day 10–9",
+      "stock up before wedding season — both shops carrying extra"
+    ],
+    "do_not_use": [
+      "premium quality spices",
+      "the finest ingredients in town",
+      "experience the flavor of India",
+      "celebrate every occasion with us"
+    ]
+  },
+  "channels_in_scope": {
+    "facebook": true,
+    "instagram": true,
+    "google_business_profile": true,
+    "google_business_profile_count": 2,
+    "email": true,
+    "whatsapp_broadcast": true,
+    "tiktok": "out of scope v1",
+    "ads": "out of scope (CLAUDE.md §1: no paid ads, organic only)"
+  },
+  "competitive_lens": "Edge against Patel Brothers / House of Spice is the freshness signal (ground in-store every Tuesday, named-origin SKUs like Idukki cardamom + Basmati 1121). Edge against generic grocers is the depth of catalog + the Indian-American owner who knows what 'sambar masala that smells like home' means."
+}

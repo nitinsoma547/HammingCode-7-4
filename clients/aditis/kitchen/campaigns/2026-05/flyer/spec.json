@@ -1,0 +1,47 @@
+{
+  "$comment": "Applied output of the visual-designer agent. Spec metadata for the Akshaya Tritiya sadya flyer. Memorial Day weekend is irrelevant for a Kerala-leaning South Indian vegetarian audience; the festival is the anchor. Type-led layout with a Malayalam parallel-label, Kerala-green primary, saffron accent (festival push allowed), banana-leaf cultural accent at low opacity.",
+  "client_id": "aditis-kitchen",
+  "month": "2026-05",
+  "topic": "akshaya-tritiya-sadya",
+  "dimensions": { "width_px": 1080, "height_px": 1350 },
+  "channels": ["instagram_portrait", "print_clip_frame", "whatsapp_share", "email_header_crop"],
+  "palette": {
+    "background": "#F5EFE6",
+    "primary": "#2F5D3A",
+    "accent": "#C97B3A",
+    "ink": "#1F2421"
+  },
+  "fonts": ["Source Serif 4 (400/600/700)", "Inter (400/500)"],
+  "layout_pattern": "B — type-led (no photo). Whitespace top 22%, Malayalam parallel-label small at top, headline center-left large, subhead below, body list of 4 short lines, CTA pinned bottom 12% with thin accent-color top border, banana-leaf SVG accent at 18% opacity in the bottom-right corner.",
+  "cultural_accent": {
+    "kind": "banana-leaf",
+    "opacity": 0.18,
+    "position": "bottom-right",
+    "size_px": 220,
+    "fill": "var(--primary)"
+  },
+  "parallel_label": "അക്ഷയ തൃതീയ സദ്യ",
+  "kicker": "Friday May 19 · Aditi's Kitchen",
+  "headline": "Akshaya Tritiya Sadya",
+  "subhead": "Banana-leaf feast — two seatings",
+  "body_lines": [
+    "18 items on the leaf · payasam included",
+    "Two seatings · 12pm and 2pm",
+    "Thirty plates per seating · pre-book only",
+    "$24 a plate"
+  ],
+  "cta": {
+    "phone": "(703) 555-0142",
+    "address": "43880 Russell Branch Pkwy · Ashburn"
+  },
+  "render": {
+    "method": "Playwright headless Chromium screenshot",
+    "viewport": "1080x1350",
+    "command": "bash render.sh"
+  },
+  "operator_notes": [
+    "Phone is a placeholder — replace before printing/posting.",
+    "Address pulled from brand.ts; confirm with owner.",
+    "Malayalam line is set in a system Malayalam font (no @font-face). Verify renders correctly in the headless Chromium environment — fallback is to set parallel_label = \"\" if the system lacks the font."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$comment": "Applied output of the visual-designer agent. Spec metadata for the 10% Spring Sale flyer — Aditi's Spice Depot's hero asset this month (active campaign per CLAUDE.md §10). Type-led restraint; two-location stacked layout (pattern C from flyer-spec-1080x1350). Saffron primary + olive accent + warm offwhite ground. Rangoli line motif bottom-right at opacity 0.15. Devanagari parallel-label अदिति का मसाला घर above the brand mark, sparingly used per desi-diaspora-voice.",
+  "client_id": "aditis-spice-depot",
+  "month": "2026-05",
+  "topic": "spring-sale-10pct",
+  "dimensions": { "width_px": 1080, "height_px": 1350 },
+  "channels": ["instagram_portrait", "print_clip_frame", "whatsapp_share"],
+  "palette": {
+    "background": "#F5EFE6",
+    "primary": "#B85A2C",
+    "accent": "#5C7A3A",
+    "ink": "#1F2421",
+    "ink_soft": "#3A413D",
+    "line": "#E3DCD0"
+  },
+  "fonts": ["Source Serif 4 (400/600/700)", "Inter (400/500)"],
+  "layout_pattern": "C — two-location stacked. Brand mark top with Devanagari parallel-label. Kicker 'Spring Sale'. Headline '10% off whole spices' (saffron). Subhead 'Through May 31'. Body lines (4). Both locations in a side-by-side block. CTA divider in primary. Rangoli SVG bottom-right at opacity 0.15.",
+  "cultural_accent": {
+    "kind": "rangoli",
+    "source": "/home/user/HammingCode-7-4/design/cultural-accents.ts",
+    "opacity": 0.15,
+    "color": "var(--primary)",
+    "position": "bottom-right corner, 220px wide"
+  },
+  "parallel_label": "अदिति का मसाला घर",
+  "kicker": "Spring Sale",
+  "headline": "10% off whole spices",
+  "subhead": "Through May 31 · both shops",
+  "body_lines": [
+    "Idukki green cardamom — whole pods, Bangalore grade",
+    "Hand-ground sambar masala — fresh every Tuesday",
+    "Aged Basmati 1121 — 18 months, 8mm+ grain",
+    "Walk in any day · 10 AM – 9 PM"
+  ],
+  "locations_block": [
+    {
+      "label": "Ashburn",
+      "address": "43880 Russell Branch Pkwy",
+      "phone": "(703) 555-0142"
+    },
+    {
+      "label": "Herndon",
+      "address": "2465 Centreville Rd",
+      "phone": "(703) 555-0287"
+    }
+  ],
+  "render": {
+    "method": "Playwright headless Chromium screenshot",
+    "viewport": "1080x1350",
+    "command": "bash render.sh"
+  },
+  "photos_considered": {
+    "selected": null,
+    "rejected_with_reason": [],
+    "note": "Type-led flyer — no photo per pattern C. If a strong whole-cardamom-pods overhead shot lands in intake, we can swap to pattern A (photo-led) in v2."
+  }
+}

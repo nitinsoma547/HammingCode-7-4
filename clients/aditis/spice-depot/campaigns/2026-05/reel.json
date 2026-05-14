@@ -1,0 +1,54 @@
+{
+  "$comment": "Applied output of the video-producer agent. One Reel per client per month per CLAUDE.md §9. Aditi's Spice Depot May 2026 Reel: hand-grinding cardamom (or sambar masala) — high motion-potential subject because spice dust catches the light. Image-to-video via FAL.AI Kling 3.0 standard tier 5s, ~$0.50. Pegged to the May 22 slot reserved in social-calendar.json.",
+  "client_id": "aditis-spice-depot",
+  "month": "2026-05",
+  "scheduled_for": "2026-05-22T17:00:00-04:00",
+  "reserved_in_social_calendar": "2026-05-22-reel-cardamom-grinding",
+  "photo_selection": {
+    "$comment": "video-producer scores monthly_intakes.photo_urls. For this Reel: prefer a tight closeup of whole green cardamom pods (still motion potential = the dust as they tumble into a grinder) OR hands at the grinder with the spice powder visible. Subject portrait or near-square aspect (Kling outputs 16:9 by default; we re-frame at upload).",
+    "selected_photo_url": "TODO: operator picks closeup of cardamom pods OR hands at the grinder from May intake (WhatsApp drop)",
+    "selection_criteria": [
+      "Subject clearly identifiable (whole cardamom pods OR hands at grinder)",
+      "Lighting natural — warm shop interior, no blown-out highlights",
+      "Motion potential — dust / pods tumbling / grinder dial visible",
+      "Aspect — portrait or near-square preferred for Reels framing",
+      "Match this month's pillar — signature_item: Idukki green cardamom"
+    ],
+    "selection_notes": "If 0 acceptable photos in intake, skip the Reel for May and refund the slot to June. Do NOT submit a placeholder image — burns the FAL.AI $0.50 with no usable output. Fallback subject if cardamom photos don't land: sambar masala grinding (also high-motion, Tuesday ritual is documentable)."
+  },
+  "fal_job_spec": {
+    "model": "fal-ai/kling-video/v1/standard/image-to-video",
+    "image_url": "<filled from photo_selection.selected_photo_url>",
+    "prompt": "Whole green cardamom pods tumbling slowly into the grinder. Subtle ambient motion — light dust catches the air above the pods. Camera holds still. Natural shop daylight. No zoom.",
+    "duration_seconds": 5,
+    "cfg_scale": 0.5,
+    "negative_prompt": "extra fingers, distorted hands, melting, AI artifacts, fast zoom, color shift, neon, sparkles, glitter, glow, blur, fish-eye, rotating, extra plates, extra dishes, morphing, magical effects, fake bokeh, warping, oversaturation, motion blur on subject"
+  },
+  "captions_and_overlay": {
+    "ig_caption": "Idukki cardamom. Whole pods, into the grinder. Powder you can smell from the door. $14.99 / 100g · Ashburn + Herndon · 10–9 every day.",
+    "on_screen_text_frames": [
+      { "start_s": 0, "end_s": 1.5, "text": "Idukki cardamom", "style": "serif-700-white-on-dark-strip" },
+      { "start_s": 3, "end_s": 5, "text": "Ashburn · Herndon", "style": "serif-400-white-on-dark-strip" }
+    ],
+    "operator_fillins": [],
+    "voiceover": null,
+    "music_mood": "warm-acoustic-no-bass-drop — operator picks from IG's licensed library at upload time. Avoid Bollywood film tracks (rights complicated for business accounts) and avoid generic 'world music' tropes."
+  },
+  "cost_tracking": {
+    "estimated_cost_cents": 50,
+    "tier": "fal-ai/kling-video/v1/standard 5s",
+    "operator_approval_required_for": "10s tier (~$1.00) — skip unless festival peak week (e.g., Diwali week in October)"
+  },
+  "failure_path": [
+    "If Kling output has visible artifacts on 2 consecutive submissions: pick a different source photo (try the sambar masala fallback subject), re-submit once more, then skip for the month if still bad. Do not paper over with creative editing.",
+    "If cardamom subject reads ambiguously (Kling re-interprets pods as 'beans' or 'capsules'): tighten the prompt to 'green cardamom pods, oval shape, ridged surface' and re-submit."
+  ],
+  "validation_checks": {
+    "single_reel_for_month": true,
+    "image_to_video_not_text_to_video": true,
+    "duration_seconds_at_5_cap": true,
+    "negative_prompt_canonical": true,
+    "caption_under_200_chars": true,
+    "caption_length": 134
+  }
+}
