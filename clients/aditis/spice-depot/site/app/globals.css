@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --color-primary: #b85a2c;
+  --color-accent: #5c7a3a;
+  --color-neutral: #f5efe6;
+  --color-ink: #1f2421;
+  --color-line: #e3dcd0;
+}
+
+html, body {
+  background: var(--color-neutral);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-serif {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+}
+
+a {
+  color: inherit;
+}
+
+/* Subtle transitions only — no flashy animations. */
+button, a {
+  transition: opacity 200ms ease, color 200ms ease, background-color 200ms ease;
+}
