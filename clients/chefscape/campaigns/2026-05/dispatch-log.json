@@ -1,0 +1,185 @@
+{
+  "client_id": "chefscape-leesburg",
+  "month": "2026-05",
+  "started_at": 1778726723782,
+  "finished_at": 1778726723782,
+  "dry_run": true,
+  "total_cost_cents": 4,
+  "entries": [
+    {
+      "slot_id": "2026-05-01-aapi-month-kickoff",
+      "channel": "fb+ig",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-04-teacher-appreciation",
+      "channel": "fb+ig",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-06-trivia-wednesday",
+      "channel": "fb+ig",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-08-mothers-day-last-seats",
+      "channel": "fb+ig",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-10-mothers-day-day-of",
+      "channel": "fb+ig",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-13-aapi-vendor-feature-1",
+      "channel": "fb+ig",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-14-kitchen-member-spotlight",
+      "channel": "fb+ig",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-16-memorial-day-grill-class",
+      "channel": "fb+ig",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-20-graduation-party-booking",
+      "channel": "fb+ig",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-22-reel-aapi-feature",
+      "channel": "ig-reel",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "deferred-to-fal",
+      "cost_cents": 0,
+      "status": "skipped"
+    },
+    {
+      "slot_id": "2026-05-23-memorial-day-weekend-hours",
+      "channel": "fb+ig",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-28-graduation-week-class",
+      "channel": "fb+ig",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "gbp-2026-05-06-mothers-day-brunch",
+      "channel": "gbp",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "dry-run",
+      "cost_cents": 1,
+      "status": "scheduled"
+    },
+    {
+      "slot_id": "gbp-2026-05-13-aapi-friday-feature",
+      "channel": "gbp",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "dry-run",
+      "cost_cents": 1,
+      "status": "scheduled"
+    },
+    {
+      "slot_id": "gbp-2026-05-18-memorial-day-grill-class",
+      "channel": "gbp",
+      "dispatched_at": 1778726723781,
+      "service": "outstand",
+      "external_id": "dry-run",
+      "cost_cents": 1,
+      "status": "scheduled"
+    },
+    {
+      "slot_id": "gbp-2026-05-22-memorial-day-weekend-hours",
+      "channel": "gbp",
+      "dispatched_at": 1778726723782,
+      "service": "outstand",
+      "external_id": "dry-run",
+      "cost_cents": 1,
+      "status": "scheduled"
+    },
+    {
+      "slot_id": "email:2026-05",
+      "channel": "email",
+      "dispatched_at": 1778726723782,
+      "service": "resend",
+      "external_id": "no-recipients",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "email.json has no to_emails. Operator must inject the client's audience list before dispatch."
+    },
+    {
+      "slot_id": "reel:2026-05",
+      "channel": "reel",
+      "dispatched_at": 1778726723782,
+      "service": "fal",
+      "external_id": "no-photo",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Reel photo not selected. Operator must pick from monthly_intake before dispatch."
+    }
+  ]
+}

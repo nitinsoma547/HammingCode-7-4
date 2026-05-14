@@ -9,7 +9,8 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit",
-    "test:meta-post": "tsx src/scripts/test-meta-post.ts"
+    "test:meta-post": "tsx src/scripts/test-meta-post.ts",
+    "dispatch:chefscape": "tsx src/scripts/dispatch-chefscape-may.ts"
   },
   "dependencies": {
     "dotenv": "^16"

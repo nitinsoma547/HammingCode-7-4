@@ -267,12 +267,24 @@ When building any generator in `api/src/services/claude/`:
 - ChefScape Leesburg May 2026 full campaign pack under
   `clients/chefscape/` — demo run showing the team flexes to a
   non-desi client via `brand_profile` configuration alone.
-- `api/` backend scaffold with Meta Graph API client
-  (`api/src/services/meta/`) — typed FB Pages + IG Business publishing,
-  dry-run smoke test, typecheck clean. Awaits Meta App Review
-  (4–6 weeks) before posting to real client pages.
+- `api/` backend with the full channel-client surface and the campaign
+  dispatcher:
+  - `api/src/services/meta/` — Graph API client (FB Pages + IG Business)
+  - `api/src/services/outstand/` — fallback for FB/IG/GBP while Meta App
+    Review is pending
+  - `api/src/services/resend/` — monthly email blast (HTML + plain-text
+    fallback rendered from `body_blocks`)
+  - `api/src/services/fal/` — FAL.AI Kling 3.0 image-to-video Reel
+    submission + polling
+  - `api/src/jobs/dispatch-campaign.ts` — reads `clients/<slug>/campaigns/<month>/`
+    JSON files (social-calendar, gbp-posts, email, reel) and dispatches
+    each asset to the right channel client. Writes `dispatch-log.json`
+    next to the campaign manifest for auditability. Idempotent on
+    re-runs. Dry-run by default; `DRY_RUN=false` goes live.
 - `.mcp.json` wires the Meta community MCP server (oliverames/meta-mcp-server)
   for dev-time tool invocations from Claude Code.
+- `REVIEW.md` at repo root — honest gap analysis: what we've built, what's
+  missing, and the path from here to a full automated marketing team.
 
 **Built (lives outside this repo, port in as needed):**
 
