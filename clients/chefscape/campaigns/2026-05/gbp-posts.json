@@ -1,0 +1,60 @@
+{
+  "$comment": "Applied output of the gbp-and-local-seo agent (monthly mode). Four Google Business Profile posts for ChefScape in May 2026, one per week. Each respects GBP format limits (title ≤ 58 chars, body ≤ 1500 chars) and uses the right cta_button kind for the action.",
+  "client_id": "chefscape-leesburg",
+  "month": "2026-05",
+  "gbp_posts": [
+    {
+      "slot_id": "gbp-2026-05-06-mothers-day-brunch",
+      "kind": "event",
+      "title": "Mother's Day brunch — May 10, two seatings",
+      "body": "Three-vendor pre-fixe at the food hall, Sunday May 10. Two seatings: 10:30 AM and 12:30 PM. Walk-ins welcome for the bar and the hall floor all day, no reservation needed. Reserve a brunch seat at (703) 480-5100.",
+      "cta_button": "CALL_NOW",
+      "cta_url": "tel:+17034805100",
+      "scheduled_for": "2026-05-06T10:00:00-04:00",
+      "image_brief": "Brunch plate + mimosa half in frame, overhead. Real plate from the kitchen, not stock.",
+      "expires_at": "2026-05-10T23:59:00-04:00",
+      "needs_image_from_intake": true
+    },
+    {
+      "slot_id": "gbp-2026-05-13-aapi-friday-feature",
+      "kind": "update",
+      "title": "AAPI Heritage Month — vendor feature every Friday",
+      "body": "Four of our hall vendors are AAPI-owned. Every Friday + Saturday in May we put one on the feature slot — their cuisine, their signature dish. This Friday: [VENDOR NAME], [CUISINE]. On the hall floor 11 AM – 10 PM. 1602 Village Market Blvd SE, Leesburg.",
+      "cta_button": "LEARN_MORE",
+      "cta_url": "https://chefscapeleesburg.com/",
+      "scheduled_for": "2026-05-13T10:00:00-04:00",
+      "image_brief": "Single tight dish photo of [DISH NAME]. Or vendor's hands plating. Natural light, no overlay text.",
+      "expires_at": "2026-05-20T23:59:00-04:00",
+      "operator_fillins": ["VENDOR NAME", "CUISINE", "DISH NAME"],
+      "needs_image_from_intake": true
+    },
+    {
+      "slot_id": "gbp-2026-05-18-memorial-day-grill-class",
+      "kind": "offer",
+      "title": "Memorial Day grill-prep class — Sat May 23, 11 AM",
+      "body": "Two-hour cooking class — marinades, rubs, plating, timing. Leave with three recipes and the marinades pre-made. $65 a seat. 14 seats only. Reserve at (703) 480-5100. 1602 Village Market Blvd SE, Leesburg.",
+      "cta_button": "CALL_NOW",
+      "cta_url": "tel:+17034805100",
+      "scheduled_for": "2026-05-18T10:00:00-04:00",
+      "image_brief": "Hands prepping marinades in steel bowls, or a finished grilled item from a previous class. No 'cooking instructor in apron smiling at camera' stock framing.",
+      "expires_at": "2026-05-23T23:59:00-04:00",
+      "needs_image_from_intake": true
+    },
+    {
+      "slot_id": "gbp-2026-05-22-memorial-day-weekend-hours",
+      "kind": "update",
+      "title": "Memorial Day weekend hours — open all 3 days",
+      "body": "Sat 5/23 · 10 AM – 10 PM. Sun 5/24 · 10 AM – 9 PM. Mon 5/25 · 10 AM – 9 PM. Two graduation-party Saturdays still open this month (May 23 and May 30). After May 30: summer pause on bookings. Reserve at (703) 480-5100.",
+      "cta_button": "CALL_NOW",
+      "cta_url": "tel:+17034805100",
+      "scheduled_for": "2026-05-22T10:00:00-04:00",
+      "image_brief": "Hall floor at a busy lunch service, soft warm light. No faces facing camera.",
+      "expires_at": "2026-05-30T23:59:00-04:00",
+      "needs_image_from_intake": true
+    }
+  ],
+  "notes_for_operator": [
+    "All four posts share the (703) 480-5100 phone CTA. If the website starts taking event bookings online, swap one or two to LEARN_MORE with the booking page URL.",
+    "The AAPI feature post will repeat the structure week-by-week; we kept ONE GBP slot for it (not four) since GBP defaults to 7-day visibility. The four weekly social posts on FB/IG handle the per-vendor specifics."
+  ]
+}

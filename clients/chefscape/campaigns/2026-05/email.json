@@ -1,0 +1,79 @@
+{
+  "$comment": "Applied output of the email-marketer agent. ChefScape's monthly Resend blast for May 2026. Anchored on Memorial Day weekend — the broader, multi-CTA event window — with a warm Mother's Day callback at the close. Sends 11 days before Memorial Day (May 14, Tue 10am) per the channel norms.",
+  "client_id": "chefscape-leesburg",
+  "month": "2026-05",
+  "send_at": "2026-05-14T10:00:00-04:00",
+  "from_name": "ChefScape",
+  "from_email": "hello@chefscapeleesburg.com",
+  "reply_to": "hello@chefscapeleesburg.com",
+  "subject": "Memorial Day weekend — grill class + last graduation slots",
+  "subject_variants": [
+    "Grill-prep class Sat 5/23, plus what else is open",
+    "Memorial Day weekend at ChefScape: grill class + venue"
+  ],
+  "preheader": "Saturday 11am cooking class — 14 seats, $65, leave with three recipes.",
+  "header_image_brief": "Hero food shot: finished grilled item from a past class plated on a wooden board with marinade jar in frame. Or a clean type-over-color block in deep teal if no image is fresh enough. No collage.",
+  "body_blocks": [
+    {
+      "type": "heading",
+      "text": "Memorial Day weekend at ChefScape"
+    },
+    {
+      "type": "paragraph",
+      "text": "Three things going on the weekend of May 23–25, plus a few open slots we're flagging while there's still time to book."
+    },
+    {
+      "type": "heading_secondary",
+      "text": "Grill-prep cooking class — Saturday May 23, 11 AM"
+    },
+    {
+      "type": "paragraph",
+      "text": "Two hours, hands-on. Marinades, rubs, plating, the timing of getting four things off the grill at once. You leave with three recipes and the marinades pre-made. $65 a seat. 14 seats total — 6 left as of this email."
+    },
+    {
+      "type": "cta",
+      "label": "Reserve a seat",
+      "url": "tel:+17034805100"
+    },
+    {
+      "type": "heading_secondary",
+      "text": "Two graduation Saturdays still open"
+    },
+    {
+      "type": "paragraph",
+      "text": "May 23 and May 30 are the last two Saturdays for graduation parties before our summer pause on event bookings. Up to 100 guests, three vendors on the menu, full bar, the patio in play if the weather holds."
+    },
+    {
+      "type": "heading_secondary",
+      "text": "Weekend hours"
+    },
+    {
+      "type": "list",
+      "label": null,
+      "items": [
+        "Saturday 5/23 — 10 AM to 10 PM",
+        "Sunday 5/24 — 10 AM to 9 PM",
+        "Monday 5/25 — 10 AM to 9 PM"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "If you came in for Mother's Day brunch on the 10th — thank you. Both seatings were full and we're glad you were there."
+    },
+    {
+      "type": "footer_note",
+      "text": "ChefScape · 1602 Village Market Blvd SE, Leesburg VA 20175 · (703) 480-5100"
+    }
+  ],
+  "plain_text_fallback": "Memorial Day weekend at ChefScape\n\nThree things going on the weekend of May 23-25.\n\n=== Grill-prep cooking class — Sat May 23, 11 AM ===\nTwo hours, hands-on. Marinades, rubs, plating, timing.\nLeave with three recipes + marinades pre-made.\n$65 a seat. 6 of 14 seats left.\nReserve: (703) 480-5100\n\n=== Two graduation Saturdays still open ===\nMay 23 and May 30 — last bookings before our summer pause.\nUp to 100 guests, three vendors, full bar.\n\n=== Weekend hours ===\nSaturday 5/23 — 10 AM to 10 PM\nSunday 5/24 — 10 AM to 9 PM\nMonday 5/25 — 10 AM to 9 PM\n\nIf you came in for Mother's Day brunch — thank you.\n\nChefScape · 1602 Village Market Blvd SE, Leesburg VA 20175 · (703) 480-5100",
+  "validation_checks": {
+    "subject_length": 56,
+    "subject_under_60": true,
+    "preheader_length": 65,
+    "preheader_under_90": true,
+    "single_primary_cta": true,
+    "plain_text_fallback_present": true,
+    "do_not_say_check": "no flagged phrases present",
+    "send_time": "Tue 10am local — matches channel norm for restaurants / retail"
+  }
+}

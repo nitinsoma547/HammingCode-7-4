@@ -1,0 +1,106 @@
+{
+  "$comment": "Applied output of the brand-strategist agent. Generalized for a non-desi Loudoun SMB to demonstrate the team architecture flexing outside our default South Asian target market.",
+  "client_id": "chefscape-leesburg",
+  "business_name": "ChefScape",
+  "category": "food-hall-and-shared-kitchen",
+  "primary_community": "pan-loudoun-suburban",
+  "secondary_audiences": [
+    "food entrepreneurs (B2B — kitchen rental)",
+    "Loudoun families (B2C — food hall + classes)",
+    "event hosts (B2B/B2C — venue rental, up to 500 guests)"
+  ],
+  "tagline": "Loudoun's commercial kitchen and food hall — eat, host, build.",
+  "tone_keywords": ["vibrant", "local", "entrepreneurial", "communal", "specific"],
+  "signature_offerings": [
+    {
+      "name": "Food hall",
+      "why_signature": "rotating roster of independent vendors — the kind of variety a single restaurant can't match"
+    },
+    {
+      "name": "Shared commercial kitchen membership",
+      "why_signature": "24/7 access, the only fully-equipped option in Loudoun for food entrepreneurs starting out"
+    },
+    {
+      "name": "Private event venue",
+      "why_signature": "up to 500 guests, full bar, live-music-ready, walking distance to Village Market shops"
+    },
+    {
+      "name": "Cooking classes & tastings",
+      "why_signature": "small-group, taught by the actual chefs cooking out of the kitchen"
+    }
+  ],
+  "languages": ["English"],
+  "cultural_hooks_relevant": [
+    "Mother's Day",
+    "Memorial Day weekend",
+    "Asian American Heritage Month (May)",
+    "Teacher Appreciation Week (early May)",
+    "Loudoun school graduations (late May)",
+    "Father's Day (June)",
+    "Fourth of July",
+    "Thanksgiving",
+    "winter holidays (corporate party season)"
+  ],
+  "do_not_say": [
+    "delicious authentic cuisine",
+    "experience the flavor",
+    "a culinary journey",
+    "best food hall in Loudoun",
+    "world-class chefs",
+    "elevated dining experience",
+    "we have something for everyone",
+    "feast for the senses"
+  ],
+  "visual_palette": {
+    "primary": "#1F4E5C",
+    "accent": "#D97A3E",
+    "neutral": "#F5EFE6",
+    "ink": "#1F2421",
+    "notes": "Deep teal primary (food-hall industrial-warm signal), burnt-orange accent for action / promo, same warm offwhite ground as the design system."
+  },
+  "locations": [
+    {
+      "label": "Leesburg — Village Market",
+      "address": "1602 Village Market Blvd SE, Leesburg, VA 20175",
+      "phone": "(703) 480-5100",
+      "hours_food_hall": {
+        "mon": "11:00 AM – 9:00 PM",
+        "tue": "11:00 AM – 9:00 PM",
+        "wed": "11:00 AM – 10:00 PM",
+        "thu": "11:00 AM – 9:00 PM",
+        "fri": "11:00 AM – 10:00 PM",
+        "sat": "10:00 AM – 10:00 PM",
+        "sun": "10:00 AM – 9:00 PM"
+      },
+      "hours_kitchen_members": "24/7",
+      "happy_hour": "Mon–Fri 3:00 PM – 7:00 PM",
+      "trivia_night": "Wed 7:30 PM",
+      "live_music": "Fri + Sat evenings",
+      "$todo": "verify hours with operator — pulled from public listings, not confirmed"
+    }
+  ],
+  "voice_examples": {
+    "do_use": [
+      "open seven days, kitchen members in 24/7",
+      "this month: three new vendors on the hall floor",
+      "Wednesday trivia, 7:30 sharp",
+      "happy hour 3–7, every weekday",
+      "your space, full bar, up to 500 guests"
+    ],
+    "do_not_use": [
+      "elevate your event with us",
+      "a destination for foodies",
+      "we'd love to host you"
+    ]
+  },
+  "channels_in_scope": {
+    "facebook": true,
+    "instagram": true,
+    "google_business_profile": true,
+    "email": true,
+    "whatsapp_broadcast": "limited — ChefScape audience is not WhatsApp-native like our default desi SMB clients. Default = skip. Operator can opt in for VIP/host list.",
+    "tiktok": "out of scope v1",
+    "ads": "out of scope (CLAUDE.md §1: no paid ads, organic only)"
+  },
+  "competitive_lens": "ChefScape's edge over single-cuisine restaurants is variety (food hall) and over a generic event hall is the on-site kitchen + chef talent. Lean into both, not either."
+}

@@ -1,0 +1,45 @@
+{
+  "$comment": "Applied output of the video-producer agent. One Reel per client per month per CLAUDE.md §9. ChefScape May 2026 Reel: AAPI vendor feature, image-to-video via FAL.AI Kling 3.0 standard tier 5s, ~$0.50.",
+  "client_id": "chefscape-leesburg",
+  "month": "2026-05",
+  "scheduled_for": "2026-05-22T17:00:00-04:00",
+  "reserved_in_social_calendar": "2026-05-22-reel-aapi-feature",
+  "photo_selection": {
+    "$comment": "video-producer scores monthly_intakes.photo_urls. ChefScape's intake for May should include vendor dish closeups. Selection criteria: subject clear, lighting natural, motion potential, AAPI vendor feature topic match, portrait/near-square aspect.",
+    "selected_photo_url": "TODO: operator uploads vendor dish photo this month",
+    "selection_notes": "If 0 acceptable photos in intake, skip the Reel for May and refund the slot to June. Do NOT submit a placeholder image — burns the FAL.AI $0.50 with no usable output."
+  },
+  "fal_job_spec": {
+    "model": "fal-ai/kling-video/v1/standard/image-to-video",
+    "image_url": "<filled from photo_selection.selected_photo_url>",
+    "prompt": "Steam rising slowly from the dish. Subtle oil shimmer on the surface. Hands of the chef placing a final garnish, then stepping out of frame. Camera holds still. Natural daylight. No zoom.",
+    "duration_seconds": 5,
+    "cfg_scale": 0.5,
+    "negative_prompt": "extra fingers, distorted hands, melting, AI artifacts, fast zoom, color shift, neon, sparkles, glitter, glow, blur, fish-eye, rotating, extra plates, extra dishes, morphing, magical effects, fake bokeh, warping, oversaturation, motion blur on subject"
+  },
+  "captions_and_overlay": {
+    "ig_caption": "AAPI feature · week 3. [DISH NAME] coming together in the kitchen. On the hall this weekend only. 1602 Village Market Blvd SE",
+    "on_screen_text_frames": [
+      { "start_s": 0, "end_s": 1.5, "text": "[DISH NAME]", "style": "serif-700-white-on-dark-strip" },
+      { "start_s": 3, "end_s": 5, "text": "Fri + Sat · Leesburg", "style": "serif-400-white-on-dark-strip" }
+    ],
+    "operator_fillins": ["DISH NAME"],
+    "voiceover": null,
+    "music_mood": "warm-acoustic-no-bass-drop — operator picks from IG's licensed library at upload time"
+  },
+  "cost_tracking": {
+    "estimated_cost_cents": 50,
+    "tier": "fal-ai/kling-video/v1/standard 5s",
+    "operator_approval_required_for": "10s tier (~$1.00) — skip unless festival peak week"
+  },
+  "failure_path": [
+    "If Kling output has visible artifacts on 2 consecutive submissions: pick a different source photo, re-submit once more, then skip for the month if still bad. Do not paper over with creative editing."
+  ],
+  "validation_checks": {
+    "single_reel_for_month": true,
+    "image_to_video_not_text_to_video": true,
+    "duration_seconds_at_5_cap": true,
+    "negative_prompt_canonical": true,
+    "caption_under_200_chars": true
+  }
+}

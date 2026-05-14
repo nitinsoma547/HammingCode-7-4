@@ -1,0 +1,117 @@
+{
+  "$comment": "Applied output of the cultural-calendar agent for May 2026 — Loudoun general-audience SMB (ChefScape). Not the default desi festival calendar; this client's primary_community is pan-loudoun-suburban so we lean US-calendar + AAPI Heritage Month + Loudoun-school-calendar.",
+  "month": "2026-05",
+  "client_id": "chefscape-leesburg",
+  "primary_community": "pan-loudoun-suburban",
+  "seasonal_notes": "Late spring — the outdoor-grill / patio / school-graduation / Memorial-Day-weekend cluster. LCPS last day of school is mid-June 2026; senior graduations are May 20–28. Loudoun farmer's markets re-open in earnest by May. Weather usually patio-friendly by mid-May.",
+  "hooks": [
+    {
+      "name": "Mother's Day",
+      "dates": ["2026-05-10"],
+      "lead_window": "2026-04-27 to 2026-05-10",
+      "communities": ["pan-american"],
+      "significance": "Single-day; highest brunch-restaurant occupancy of the year.",
+      "angles": {
+        "food-hall": [
+          "Mother's Day brunch — pre-fixe across three vendors, one ticket",
+          "Kids-cook-for-mom class the Saturday before",
+          "Build-her-favorite cooking class — multiple cuisines, kids welcome"
+        ],
+        "shared-kitchen": [
+          "Vendor spotlight: the chefs cooking moms' favorites this weekend",
+          "Make-and-take: kids decorate dessert boxes, take home"
+        ],
+        "event-venue": [
+          "Booking note: Mother's Day brunch sold out / last seats — drives reservation urgency"
+        ]
+      },
+      "do_not_say": [
+        "celebrate the woman who does everything",
+        "she deserves it",
+        "treat your mom like royalty"
+      ]
+    },
+    {
+      "name": "Teacher Appreciation Week",
+      "dates": ["2026-05-04", "2026-05-05", "2026-05-06", "2026-05-07", "2026-05-08"],
+      "lead_window": "2026-04-27 to 2026-05-08",
+      "communities": ["pan-american"],
+      "significance": "LCPS parents are organizing teacher lunches; first week of May is peak bulk-order volume for catering.",
+      "angles": {
+        "food-hall": [
+          "Teacher Appreciation lunch trays — order Thursday, pick up Friday",
+          "Coffee + pastry bundle for early-week drop-off"
+        ],
+        "shared-kitchen": [
+          "Three vendor catering packages, one combined order"
+        ]
+      },
+      "do_not_say": ["thank a teacher today", "education is everything"]
+    },
+    {
+      "name": "Asian American & Pacific Islander Heritage Month",
+      "dates": ["2026-05-01 to 2026-05-31"],
+      "lead_window": "2026-05-01 to 2026-05-31",
+      "communities": ["aapi"],
+      "significance": "Cultural recognition month; the food hall has AAPI-owned vendors who should be foregrounded — not a generic 'celebrate diversity' post.",
+      "angles": {
+        "food-hall": [
+          "Vendor profile: name + cuisine + the dish their amma / lola / halmoni taught them",
+          "Friday night feature: one AAPI vendor, one signature dish, one week",
+          "Cooking class with the vendor (Korean tteokbokki / Filipino lumpia / Vietnamese banh mi build)"
+        ]
+      },
+      "do_not_say": [
+        "celebrating diversity this month",
+        "honoring AAPI voices",
+        "a melting pot of flavors"
+      ]
+    },
+    {
+      "name": "Memorial Day weekend",
+      "dates": ["2026-05-23", "2026-05-24", "2026-05-25"],
+      "lead_window": "2026-05-11 to 2026-05-25",
+      "communities": ["pan-american"],
+      "significance": "Three-day weekend; outdoor entertaining peak; grilling content peaks; many Loudoun families host. Strong driver for: grilling cooking class, food hall extended hours, group catering for backyard parties.",
+      "angles": {
+        "food-hall": [
+          "Memorial Day weekend hours: open all three days",
+          "Grill-prep cooking class: marinades, rubs, plating — Saturday morning",
+          "Group platters to-go — order Wednesday, pick up Friday"
+        ],
+        "shared-kitchen": [
+          "Vendor BBQ pop-up on the hall floor Saturday afternoon"
+        ],
+        "event-venue": [
+          "Last call: Memorial Day weekend graduation parties — final two date slots"
+        ]
+      },
+      "do_not_say": [
+        "kick off summer",
+        "the unofficial start of summer",
+        "fire up the grill"
+      ]
+    },
+    {
+      "name": "Loudoun school graduations",
+      "dates": ["2026-05-20 to 2026-05-28"],
+      "lead_window": "2026-04-20 to 2026-05-25",
+      "communities": ["pan-american"],
+      "significance": "Loudoun has 18+ high schools graduating in this window; graduation parties drive event-venue bookings and large catering orders.",
+      "angles": {
+        "event-venue": [
+          "Graduation party packages — three sizes (25 / 50 / 100 guests)",
+          "Last two open Saturdays this month"
+        ],
+        "food-hall": [
+          "Graduation week cooking class for the kids before they head out",
+          "Graduation cake order window — 72 hours notice"
+        ]
+      },
+      "do_not_say": [
+        "celebrate your grad's big day",
+        "they did it!"
+      ]
+    }
+  ]
+}

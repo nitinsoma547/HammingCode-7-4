@@ -1,0 +1,34 @@
+{
+  "$comment": "Applied output of the visual-designer agent. Spec metadata for the Memorial Day grill-prep class flyer. ChefScape isn't a desi client — no rangoli / banana-leaf / mehendi / diya cultural accent. Type-led restraint, deep teal primary, burnt-orange accent.",
+  "client_id": "chefscape-leesburg",
+  "month": "2026-05",
+  "topic": "memorial-day-grill-class",
+  "dimensions": { "width_px": 1080, "height_px": 1350 },
+  "channels": ["instagram_portrait", "print_clip_frame", "whatsapp_share"],
+  "palette": {
+    "background": "#F5EFE6",
+    "primary": "#1F4E5C",
+    "accent": "#D97A3E",
+    "ink": "#1F2421"
+  },
+  "fonts": ["Source Serif 4 (600/700)", "Inter (400/500)"],
+  "layout_pattern": "B — type-led (no photo). Whitespace top 25%, headline center-left large, body list, CTA pinned bottom 12% with thin accent-color top border.",
+  "cultural_accent": null,
+  "headline": "Grill-prep class",
+  "subhead": "Memorial Day weekend · Saturday May 23, 11 AM",
+  "body_lines": [
+    "Two hours, hands-on",
+    "Marinades · rubs · plating · timing",
+    "Leave with three recipes + marinades pre-made",
+    "$65 a seat · 14 seats only"
+  ],
+  "cta": {
+    "phone": "(703) 480-5100",
+    "address": "1602 Village Market Blvd SE · Leesburg"
+  },
+  "render": {
+    "method": "Playwright headless Chromium screenshot",
+    "viewport": "1080x1350",
+    "command": "bash render.sh"
+  }
+}
