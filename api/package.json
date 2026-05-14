@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "test:meta-post": "tsx src/scripts/test-meta-post.ts",
     "dispatch:chefscape": "tsx src/scripts/dispatch-chefscape-may.ts",
-    "dispatch:aditis-kitchen": "tsx src/scripts/dispatch-aditis-kitchen-may.ts"
+    "dispatch:aditis-kitchen": "tsx src/scripts/dispatch-aditis-kitchen-may.ts",
+    "dispatch:aditis-spice-depot": "tsx src/scripts/dispatch-aditis-spice-depot-may.ts"
   },
   "dependencies": {
     "dotenv": "^16"

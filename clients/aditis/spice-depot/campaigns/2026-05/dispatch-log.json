@@ -1,0 +1,189 @@
+{
+  "client_id": "aditis-spice-depot",
+  "month": "2026-05",
+  "started_at": 1778728019660,
+  "finished_at": 1778728019660,
+  "dry_run": true,
+  "total_cost_cents": 0,
+  "entries": [
+    {
+      "slot_id": "2026-05-02-promo-spring-sale-kickoff",
+      "channel": "fb+ig",
+      "dispatched_at": 1778728019660,
+      "service": "meta",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-05-signature-cardamom",
+      "channel": "fb+ig",
+      "dispatched_at": 1778728019660,
+      "service": "meta",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-07-behind-the-scenes-tuesday-grinding",
+      "channel": "fb+ig",
+      "dispatched_at": 1778728019660,
+      "service": "meta",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-09-mothers-day-chai-bundle",
+      "channel": "fb+ig",
+      "dispatched_at": 1778728019660,
+      "service": "meta",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-12-wedding-season-bulk",
+      "channel": "fb+ig",
+      "dispatched_at": 1778728019660,
+      "service": "meta",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-14-location-ashburn",
+      "channel": "fb+ig",
+      "dispatched_at": 1778728019660,
+      "service": "meta",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-16-akshaya-tritiya-lead-in",
+      "channel": "fb+ig",
+      "dispatched_at": 1778728019660,
+      "service": "meta",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-19-akshaya-tritiya-day-of-signature",
+      "channel": "fb+ig",
+      "dispatched_at": 1778728019660,
+      "service": "meta",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-21-signature-basmati-1121",
+      "channel": "fb+ig",
+      "dispatched_at": 1778728019660,
+      "service": "meta",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-22-reel-cardamom-grinding",
+      "channel": "ig-reel",
+      "dispatched_at": 1778728019660,
+      "service": "fal",
+      "external_id": "deferred-to-fal",
+      "cost_cents": 0,
+      "status": "skipped"
+    },
+    {
+      "slot_id": "2026-05-25-memorial-weekend-tandoori",
+      "channel": "fb+ig",
+      "dispatched_at": 1778728019660,
+      "service": "meta",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "2026-05-28-review-spotlight-herndon",
+      "channel": "fb+ig",
+      "dispatched_at": 1778728019660,
+      "service": "meta",
+      "external_id": "no-media-url",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Slot has needs_image_from_intake=true but no media_url set. Operator must fill before dispatch."
+    },
+    {
+      "slot_id": "gbp-2026-05-04-spring-sale-launch",
+      "channel": "gbp",
+      "dispatched_at": 1778728019660,
+      "service": "operator-manual",
+      "external_id": "operator-paste",
+      "cost_cents": 0,
+      "status": "manual_required",
+      "error": "GBP API client not built in v1. Operator pastes title + body into business.google.com — copy is ready in gbp-posts.json."
+    },
+    {
+      "slot_id": "gbp-2026-05-11-wedding-season-bulk",
+      "channel": "gbp",
+      "dispatched_at": 1778728019660,
+      "service": "operator-manual",
+      "external_id": "operator-paste",
+      "cost_cents": 0,
+      "status": "manual_required",
+      "error": "GBP API client not built in v1. Operator pastes title + body into business.google.com — copy is ready in gbp-posts.json."
+    },
+    {
+      "slot_id": "gbp-2026-05-18-akshaya-tritiya-stockup",
+      "channel": "gbp",
+      "dispatched_at": 1778728019660,
+      "service": "operator-manual",
+      "external_id": "operator-paste",
+      "cost_cents": 0,
+      "status": "manual_required",
+      "error": "GBP API client not built in v1. Operator pastes title + body into business.google.com — copy is ready in gbp-posts.json."
+    },
+    {
+      "slot_id": "gbp-2026-05-22-memorial-day-hours-tandoori",
+      "channel": "gbp",
+      "dispatched_at": 1778728019660,
+      "service": "operator-manual",
+      "external_id": "operator-paste",
+      "cost_cents": 0,
+      "status": "manual_required",
+      "error": "GBP API client not built in v1. Operator pastes title + body into business.google.com — copy is ready in gbp-posts.json."
+    },
+    {
+      "slot_id": "email:2026-05",
+      "channel": "email",
+      "dispatched_at": 1778728019660,
+      "service": "resend",
+      "external_id": "no-recipients",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "email.json has no to_emails. Operator must inject the client's audience list before dispatch."
+    },
+    {
+      "slot_id": "reel:2026-05",
+      "channel": "reel",
+      "dispatched_at": 1778728019660,
+      "service": "fal",
+      "external_id": "no-photo",
+      "cost_cents": 0,
+      "status": "failed",
+      "error": "Reel photo not selected. Operator must pick from monthly_intake before dispatch."
+    }
+  ]
+}
