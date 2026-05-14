@@ -262,10 +262,11 @@ When building any generator in `api/src/services/claude/`:
 
 **Built in this repo:**
 
-- Full agent team in `.claude/agents/` — 12 subagents covering brand
+- Full agent team in `.claude/agents/` — 13 subagents covering brand
   strategy, website dev, social planning, GBP/local SEO, email,
   flyers/IG graphics, Reel production, review responses, lead gen,
-  voice review, integration scaffolding, cultural calendar. See §14.
+  voice review, integration scaffolding, cultural calendar, analytics
+  reporting. See §14.
 - Reusable skills in `.claude/skills/` — 9 playbooks any agent invokes:
   desi-diaspora-voice, whatsapp-broadcast-copy, monthly-content-calendar,
   kling-image-to-video-prompt, flyer-spec-1080x1350, review-response-positive,
@@ -296,6 +297,10 @@ When building any generator in `api/src/services/claude/`:
   for dev-time tool invocations from Claude Code.
 - `REVIEW.md` at repo root — honest gap analysis: what we've built, what's
   missing, and the path from here to a full automated marketing team.
+- `db/migrations/0001_initial.sql` — Supabase schema for `clients`,
+  `brand_profiles`, `monthly_intakes`, `campaigns`, `campaign_assets`,
+  `leads` per CLAUDE.md §6. Service-role-only RLS. Seed data for both
+  Aditi brands in `db/seed/`.
 
 **Built (lives outside this repo, port in as needed):**
 
@@ -382,7 +387,7 @@ swap to a fork or community alternative without operator approval.
 
 ## 14. Claude Code Subagents (this repo)
 
-12 subagents live in `.claude/agents/`. Invoke them via the `Agent`
+13 subagents live in `.claude/agents/`. Invoke them via the `Agent`
 tool by name, or let Claude Code dispatch automatically based on the
 agent's `description`. Architecture follows the orchestrator-workers
 pattern from Anthropic's claude-cookbooks — the operator (you, the
@@ -430,6 +435,10 @@ agent definitions to run automated monthly campaigns at runtime.
 - **`reputation-manager`** (haiku) — drafts review responses
   (positive + negative). Uses `review-response-positive` and
   `review-response-negative` skills. Never auto-publishes.
+- **`analytics-reporter`** (haiku) — at month-end, reads the prior
+  month's `dispatch-log.json` + operator-pulled platform insights
+  and drafts the one-page client report (`report.md`). Honest about
+  missing metrics; never fabricates numbers.
 
 **Acquisition (operator-driven):**
 
@@ -447,7 +456,7 @@ agent definitions to run automated monthly campaigns at runtime.
 - **`integration-builder`** (sonnet) — scaffolds typed API clients
   under `api/src/services/<name>/`.
 
-### Rules for adding a 13th subagent
+### Rules for adding a 14th subagent
 
 Document it here and explain why an existing one couldn't cover the
 use case. Prefer adding a `Skill` (see §15) over a new agent when the
