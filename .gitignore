@@ -1,0 +1,26 @@
+# Subagent worktrees (transient, managed by Claude Code harness)
+.claude/worktrees/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+
+# Defense-in-depth (each Next.js site has its own .gitignore)
+**/node_modules/
+**/.next/
+**/.tsbuildinfo
+**/next-env.d.ts
+
+# Env
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Python (scrapers/ adds its own)
+__pycache__/
+*.pyc
