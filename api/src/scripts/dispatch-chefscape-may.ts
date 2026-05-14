@@ -2,10 +2,13 @@
  * Run the dispatcher against the ChefScape May 2026 campaign pack.
  *
  *   npm run dispatch:chefscape                  # dry-run, prints what would post
- *   DRY_RUN=false npm run dispatch:chefscape    # real dispatch (needs Meta/Outstand/Resend/FAL creds)
+ *   DRY_RUN=false npm run dispatch:chefscape    # real dispatch (needs Meta/Resend/FAL creds)
  *
- * Defaults to Outstand for social since Meta App Review is the gating
- * factor in the next 4-6 weeks. Switch SOCIAL_CHANNEL=meta once approved.
+ * Social dispatches via Meta Graph API only. Until Meta App Review approves
+ * (and META_PAGE_ACCESS_TOKEN etc. are set in .env), social posts log as
+ * status="manual_required" — the operator copy-pastes from caption_fb /
+ * caption_ig until the API is live. Email + Reel dispatch immediately
+ * since Resend + FAL don't depend on App Review.
  */
 
 import path from "node:path";
@@ -18,7 +21,6 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 
 async function main(): Promise<void> {
   const dryRun = (process.env.DRY_RUN ?? "true").toLowerCase() !== "false";
-  const socialChannel = (process.env.SOCIAL_CHANNEL ?? "outstand") as "meta" | "outstand";
 
   const campaignDir = path.resolve(
     scriptDir,
@@ -28,8 +30,6 @@ async function main(): Promise<void> {
   const result = await dispatchCampaign({
     campaignDir,
     dryRun,
-    socialChannel,
-    outstandConnectionId: process.env.OUTSTAND_CONNECTION_ID_CHEFSCAPE ?? "chefscape-conn-placeholder",
   });
 
   log.info("dispatch-chefscape-may.summary", {

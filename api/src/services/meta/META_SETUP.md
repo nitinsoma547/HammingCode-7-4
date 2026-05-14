@@ -153,15 +153,24 @@ in `campaigns.total_meta_calls` for visibility.
 
 ---
 
-## 9. Fallback path
+## 9. While App Review is pending
 
-While App Review is pending (4-6 weeks):
-- Use Outstand for posting (`api/src/services/outstand/`)
-- Our content team continues to produce the same JSON shape
-- Once approved, swap the scheduler from Outstand to our Meta client
-  per-client — no content regeneration needed
+We do not use a third-party scheduler as a bridge. During the 4-6 week
+window:
 
-The `social-media-planner` output JSON shape is the same either way.
+- The agent team still generates the same JSON output (no rework after
+  approval)
+- The dispatcher logs each social slot as `status: "manual_required"`
+  in `dispatch-log.json`
+- The operator opens `social-calendar.json`, picks the media URL,
+  and copy-pastes `caption_fb` / `caption_ig` into the FB / IG UI by hand
+- Email (Resend) and Reels (FAL.AI) automate immediately — those don't
+  depend on Meta App Review
+
+Once App Review approves, fill the three env vars (token + page id +
+ig user id), set `DRY_RUN=false`, and the dispatcher routes the same
+JSON through `api/src/services/meta/` automatically. No content
+regeneration.
 
 ---
 

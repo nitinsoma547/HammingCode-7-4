@@ -54,8 +54,8 @@ and idiomatic English for the diaspora audience. Do not default to generic
 | Layer            | Choice                                  | Notes |
 |------------------|-----------------------------------------|-------|
 | Content gen      | Claude Haiku via Anthropic SDK          | `claude-haiku-4-5-20251001` |
-| Social posting   | Meta Graph API direct (`api/src/services/meta/`) | FB Pages + IG Business; Outstand as fallback during Meta App Review |
-| Social posting (fallback) | Outstand (FB / IG / GBP)       | $0.01 / post, no monthly fee — used while Meta App Review pending |
+| Social posting   | Meta Graph API direct (`api/src/services/meta/`) | FB Pages + IG Business. Requires Meta App Review (4–6 weeks). No third-party schedulers. |
+| GBP posts        | Operator-manual until native GBP API client lands | Agent generates copy; operator pastes into business.google.com |
 | Video            | FAL.AI → Kling 3.0 (image-to-video)     | ~$0.50 / clip |
 | Email            | Resend                                  | Free tier |
 | Backend          | Node.js (TypeScript) on Railway         | Same provider as QuikRecap |
@@ -69,11 +69,16 @@ and idiomatic English for the diaspora audience. Do not default to generic
 - **Haiku, not Sonnet/Opus:** Per-client content costs must stay <$1/month of
   inference. Use Sonnet only if Haiku output for a specific generator (e.g.
   cultural campaign hooks) fails QA — and gate it behind config.
-- **Meta Graph API direct, not just Outstand:** owning the integration removes
-  per-post fees, ToS-restriction risk at scale, and middleman ratelimits.
-  Requires Meta App Review (4–6 weeks per their May 2026 docs) for
-  `instagram_content_publish` + `pages_manage_posts`. Outstand stays wired as
-  a fallback path so we can ship before App Review approves.
+- **Meta Graph API direct, no third-party scheduler:** owning the integration
+  removes per-post fees, ToS-restriction risk at scale, and middleman
+  ratelimits. Requires Meta App Review (4–6 weeks per their May 2026 docs)
+  for `instagram_content_publish` + `pages_manage_posts`. We accept the
+  wait — during the window, the agent team still generates the content
+  and the operator posts manually from the JSON output.
+- **GBP posts operator-manual in v1:** Google Business Profile API has a
+  separate OAuth + quota flow from Meta. Agent produces the copy + CTA;
+  operator pastes. Build a native client at ~10 clients when manual paste
+  becomes the bottleneck.
 - **Image-to-video, not text-to-video:** Clients send real photos via
   WhatsApp; we animate them. Avoids the "AI slop" look that hurts trust with
   this audience.
@@ -233,9 +238,15 @@ When building any generator in `api/src/services/claude/`:
 - **Meta MCP server** (`.mcp.json` → `meta`): community MCP server wired for
   dev-time tool invocations from Claude Code. Production cron uses the
   TypeScript client in `api/src/services/meta/`, not the MCP server.
-- **Outstand (fallback):** Per-post billing. Used while Meta App Review is
-  pending. Batch sends so one campaign isn't 30 API calls if it can be one.
-  Store the returned post id on `campaign_assets`. Drop once Meta is live.
+- **No third-party social schedulers (Outstand, Buffer, Hootsuite, etc.).**
+  We post via Meta direct or not at all. During the 4-6 week Meta App
+  Review window, the dispatcher logs social slots as `manual_required`
+  and the operator posts from the JSON output by hand. Worth the wait
+  to keep the integration in-house.
+- **GBP posts:** operator-manual in v1. The `gbp-and-local-seo` agent
+  produces the JSON; dispatcher writes `manual_required` to dispatch-log;
+  operator pastes into business.google.com. Build a native Google
+  Business Profile API client once we hit ~10 clients.
 - **FAL.AI Kling 3.0:** Image-to-video, ~$0.50 per clip. Cap at 1 Reel per
   client per month in v1 to keep COGS predictable. The image picker chooses
   the best photo from `monthly_intakes.photo_urls` via a Haiku call.
@@ -267,20 +278,20 @@ When building any generator in `api/src/services/claude/`:
 - ChefScape Leesburg May 2026 full campaign pack under
   `clients/chefscape/` — demo run showing the team flexes to a
   non-desi client via `brand_profile` configuration alone.
-- `api/` backend with the full channel-client surface and the campaign
-  dispatcher:
-  - `api/src/services/meta/` — Graph API client (FB Pages + IG Business)
-  - `api/src/services/outstand/` — fallback for FB/IG/GBP while Meta App
-    Review is pending
+- `api/` backend with the channel clients we own + the campaign dispatcher:
+  - `api/src/services/meta/` — Graph API client (FB Pages + IG Business).
+    Awaits Meta App Review before posting to real client pages.
   - `api/src/services/resend/` — monthly email blast (HTML + plain-text
-    fallback rendered from `body_blocks`)
+    fallback rendered from `body_blocks`). Sends immediately, no review gate.
   - `api/src/services/fal/` — FAL.AI Kling 3.0 image-to-video Reel
-    submission + polling
+    submission + polling. Sends immediately, no review gate.
   - `api/src/jobs/dispatch-campaign.ts` — reads `clients/<slug>/campaigns/<month>/`
     JSON files (social-calendar, gbp-posts, email, reel) and dispatches
     each asset to the right channel client. Writes `dispatch-log.json`
     next to the campaign manifest for auditability. Idempotent on
-    re-runs. Dry-run by default; `DRY_RUN=false` goes live.
+    re-runs. Dry-run by default; `DRY_RUN=false` goes live. Social posts
+    log `manual_required` during the Meta App Review window; GBP posts
+    always log `manual_required` until the GBP API client lands.
 - `.mcp.json` wires the Meta community MCP server (oliverames/meta-mcp-server)
   for dev-time tool invocations from Claude Code.
 - `REVIEW.md` at repo root — honest gap analysis: what we've built, what's

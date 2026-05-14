@@ -48,11 +48,6 @@ export const config = {
     appSecret: optional("META_APP_SECRET"),
   },
 
-  outstand: {
-    /** Legacy: kept for fallback while Meta App Review is pending. */
-    apiKey: optional("OUTSTAND_API_KEY"),
-  },
-
   resend: {
     apiKey: optional("RESEND_API_KEY"),
   },

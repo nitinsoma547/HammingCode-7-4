@@ -1,33 +1,30 @@
 /**
- * Campaign dispatcher.
+ * Campaign dispatcher — Meta-only for social, Resend for email, FAL for Reels.
  *
  * Takes a `clients/<slug>/campaigns/<month>/` directory (JSON files
- * produced by the agent team) and dispatches each asset to the right
- * channel client:
- *   social-calendar.json  -> Meta (preferred) or Outstand (fallback)
- *   gbp-posts.json        -> Outstand
+ * produced by the agent team) and dispatches each asset to its channel:
+ *   social-calendar.json  -> Meta Graph API (FB Pages + IG Business)
+ *   gbp-posts.json        -> operator-manual until the GBP API client lands
  *   email.json            -> Resend
  *   reel.json             -> FAL.AI Kling 3.0
- *   flyer/*.png           -> attached to social posts that reference it
  *
- * Writes a `dispatch-log.json` next to the campaign manifest, recording
- * what was sent / scheduled, IDs returned, errors per slot.
+ * During the Meta App Review window (4-6 weeks), social dispatch fails
+ * with a clear "App Review pending" message. Email + Reel automation
+ * still works because Resend + FAL don't require App Review.
  *
- * Idempotency: re-running with the same campaign dir does NOT re-dispatch
- * slots whose IDs are already in dispatch-log.json. Operator can force
- * a single slot to retry by deleting its entry.
+ * Writes `dispatch-log.json` next to the campaign manifest. Idempotent
+ * on re-runs (skips slots already scheduled).
  *
- * Runs in dry-run mode by default. Set DRY_RUN=false to dispatch for real.
+ * Dry-run by default. Set DRY_RUN=false to dispatch for real.
  */
 
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import { publishCrossPost, publishFacebookPost, publishInstagramPost } from "@/services/meta";
-import { schedulePost as outstandSchedulePost } from "@/services/outstand";
-import type { OutstandChannel } from "@/services/outstand";
 import { sendEmail } from "@/services/resend";
 import { submitKlingJob } from "@/services/fal";
+import { config } from "@/lib/config";
 import { log } from "@/lib/logger";
 
 interface SocialPost {
@@ -39,7 +36,6 @@ interface SocialPost {
   caption_ig?: string;
   image_brief?: string;
   needs_image_from_intake?: boolean;
-  /** Filled by operator after picking from intake. */
   media_url?: string;
 }
 
@@ -78,7 +74,6 @@ interface EmailPayloadFile {
   preheader: string;
   body_blocks: Array<{ type: string; text?: string; label?: string | null; url?: string; items?: string[] }>;
   plain_text_fallback: string;
-  /** Operator must supply at dispatch time — comes from Supabase. */
   to_emails?: string[];
 }
 
@@ -99,10 +94,10 @@ interface DispatchLogEntry {
   slot_id: string;
   channel: string;
   dispatched_at: number;
-  service: "meta" | "outstand" | "resend" | "fal";
+  service: "meta" | "resend" | "fal" | "operator-manual";
   external_id: string;
   cost_cents: number;
-  status: "scheduled" | "posted" | "submitted" | "skipped" | "failed";
+  status: "scheduled" | "posted" | "submitted" | "skipped" | "failed" | "manual_required";
   error?: string;
 }
 
@@ -116,13 +111,9 @@ interface DispatchLog {
   entries: DispatchLogEntry[];
 }
 
-interface DispatchOptions {
+export interface DispatchOptions {
   campaignDir: string;
   dryRun: boolean;
-  /** "meta" routes social posts via Graph API direct; "outstand" via Outstand. */
-  socialChannel: "meta" | "outstand";
-  /** When dispatching Outstand, this Page connection ID is needed per client. */
-  outstandConnectionId?: string;
 }
 
 async function readJsonOrNull<T>(p: string): Promise<T | null> {
@@ -139,12 +130,18 @@ function isoToUnixSeconds(iso: string): number {
   return Math.floor(new Date(iso).getTime() / 1000);
 }
 
+function metaCredsConfigured(): boolean {
+  return Boolean(config.meta.pageAccessToken && config.meta.fbPageId && config.meta.igUserId);
+}
+
 async function dispatchSocialCalendar(
   calendar: SocialCalendar,
   options: DispatchOptions,
   alreadyDispatched: Set<string>,
 ): Promise<DispatchLogEntry[]> {
   const entries: DispatchLogEntry[] = [];
+  const credsReady = metaCredsConfigured();
+
   for (const post of calendar.posts) {
     const key = `${post.slot_id}:social`;
     if (alreadyDispatched.has(key)) {
@@ -152,7 +149,7 @@ async function dispatchSocialCalendar(
         slot_id: post.slot_id,
         channel: post.channels.join("+"),
         dispatched_at: Date.now(),
-        service: options.socialChannel,
+        service: "meta",
         external_id: "skipped-idempotent",
         cost_cents: 0,
         status: "skipped",
@@ -160,17 +157,29 @@ async function dispatchSocialCalendar(
       continue;
     }
 
-    // Reel slots are handled by the FAL flow + a separate IG post once the
-    // video URL is back. Skip here.
     if (post.kind === "reel") {
       entries.push({
         slot_id: post.slot_id,
         channel: "ig-reel",
         dispatched_at: Date.now(),
-        service: options.socialChannel,
+        service: "fal",
         external_id: "deferred-to-fal",
         cost_cents: 0,
         status: "skipped",
+      });
+      continue;
+    }
+
+    if (!options.dryRun && !credsReady) {
+      entries.push({
+        slot_id: post.slot_id,
+        channel: post.channels.join("+"),
+        dispatched_at: Date.now(),
+        service: "meta",
+        external_id: "app-review-pending",
+        cost_cents: 0,
+        status: "manual_required",
+        error: "Meta credentials not set. Either App Review is still pending or .env not configured. Operator must post manually from caption_fb / caption_ig + media_url until Meta is live.",
       });
       continue;
     }
@@ -181,7 +190,7 @@ async function dispatchSocialCalendar(
         slot_id: post.slot_id,
         channel: post.channels.join("+"),
         dispatched_at: Date.now(),
-        service: options.socialChannel,
+        service: "meta",
         external_id: "no-media-url",
         cost_cents: 0,
         status: "failed",
@@ -193,95 +202,59 @@ async function dispatchSocialCalendar(
     const scheduledFor = isoToUnixSeconds(post.scheduled_for);
 
     try {
-      if (options.socialChannel === "meta") {
-        if (post.channels.includes("fb") && post.channels.includes("ig") && mediaUrl) {
-          const result = await publishCrossPost({
-            kind: "photo",
-            imageUrl: mediaUrl,
-            fbCaption: post.caption_fb ?? "",
-            igCaption: post.caption_ig ?? "",
-            fbScheduledPublishTime: scheduledFor,
-          });
-          entries.push({
-            slot_id: post.slot_id,
-            channel: "fb",
-            dispatched_at: Date.now(),
-            service: "meta",
-            external_id: result.fb.id,
-            cost_cents: 0,
-            status: "scheduled",
-          });
-          entries.push({
-            slot_id: post.slot_id,
-            channel: "ig",
-            dispatched_at: Date.now(),
-            service: "meta",
-            external_id: result.ig.id,
-            cost_cents: 0,
-            status: "posted",
-          });
-        } else if (post.channels.includes("fb") && post.caption_fb) {
-          const fbPost = mediaUrl
-            ? { kind: "photo" as const, imageUrl: mediaUrl, message: post.caption_fb, scheduledPublishTime: scheduledFor }
-            : { kind: "text" as const, message: post.caption_fb, scheduledPublishTime: scheduledFor };
-          const result = await publishFacebookPost(fbPost, { dryRun: options.dryRun });
-          entries.push({
-            slot_id: post.slot_id,
-            channel: "fb",
-            dispatched_at: Date.now(),
-            service: "meta",
-            external_id: result.id,
-            cost_cents: 0,
-            status: "scheduled",
-          });
-        } else if (post.channels.includes("ig") && post.caption_ig && mediaUrl) {
-          const result = await publishInstagramPost(
-            { kind: "photo", imageUrl: mediaUrl, caption: post.caption_ig },
-            { dryRun: options.dryRun },
-          );
-          entries.push({
-            slot_id: post.slot_id,
-            channel: "ig",
-            dispatched_at: Date.now(),
-            service: "meta",
-            external_id: result.id,
-            cost_cents: 0,
-            status: "posted",
-          });
-        }
-      } else {
-        if (!options.outstandConnectionId) {
-          throw new Error("Outstand connection ID required when socialChannel=outstand.");
-        }
-        const channels: OutstandChannel[] = [];
-        if (post.channels.includes("fb")) channels.push("facebook");
-        if (post.channels.includes("ig")) channels.push("instagram");
-
-        const caption =
-          channels.length === 2
-            ? post.caption_ig ?? post.caption_fb ?? ""
-            : channels[0] === "facebook"
-            ? post.caption_fb ?? ""
-            : post.caption_ig ?? "";
-
-        const result = await outstandSchedulePost(
-          {
-            connectionId: options.outstandConnectionId,
-            channels,
-            scheduledFor,
-            caption,
-            mediaUrls: mediaUrl ? [mediaUrl] : [],
-          },
+      if (post.channels.includes("fb") && post.channels.includes("ig") && mediaUrl) {
+        const result = await publishCrossPost({
+          kind: "photo",
+          imageUrl: mediaUrl,
+          fbCaption: post.caption_fb ?? "",
+          igCaption: post.caption_ig ?? "",
+          fbScheduledPublishTime: scheduledFor,
+        });
+        entries.push({
+          slot_id: post.slot_id,
+          channel: "fb",
+          dispatched_at: Date.now(),
+          service: "meta",
+          external_id: result.fb.id,
+          cost_cents: 0,
+          status: "scheduled",
+        });
+        entries.push({
+          slot_id: post.slot_id,
+          channel: "ig",
+          dispatched_at: Date.now(),
+          service: "meta",
+          external_id: result.ig.id,
+          cost_cents: 0,
+          status: "posted",
+        });
+      } else if (post.channels.includes("fb") && post.caption_fb) {
+        const fbPost = mediaUrl
+          ? { kind: "photo" as const, imageUrl: mediaUrl, message: post.caption_fb, scheduledPublishTime: scheduledFor }
+          : { kind: "text" as const, message: post.caption_fb, scheduledPublishTime: scheduledFor };
+        const result = await publishFacebookPost(fbPost, { dryRun: options.dryRun });
+        entries.push({
+          slot_id: post.slot_id,
+          channel: "fb",
+          dispatched_at: Date.now(),
+          service: "meta",
+          external_id: result.id,
+          cost_cents: 0,
+          status: "scheduled",
+        });
+      } else if (post.channels.includes("ig") && post.caption_ig && mediaUrl) {
+        const result = await publishInstagramPost(
+          { kind: "photo", imageUrl: mediaUrl, caption: post.caption_ig },
           { dryRun: options.dryRun },
         );
         entries.push({
           slot_id: post.slot_id,
-          channel: channels.join("+"),
+          channel: "ig",
           dispatched_at: Date.now(),
-          service: "outstand",
+          service: "meta",
           external_id: result.id,
-          cost_cents: result.costCents,
-          status: "scheduled",
+          cost_cents: 0,
+          status: "posted",
         });
       }
     } catch (err) {
@@ -289,7 +262,7 @@ async function dispatchSocialCalendar(
         slot_id: post.slot_id,
         channel: post.channels.join("+"),
         dispatched_at: Date.now(),
-        service: options.socialChannel,
+        service: "meta",
         external_id: "error",
         cost_cents: 0,
         status: "failed",
@@ -300,16 +273,24 @@ async function dispatchSocialCalendar(
   return entries;
 }
 
-async function dispatchGBPPosts(
+/**
+ * GBP posts are operator-manual in v1.
+ *
+ * Why: the Google Business Profile API (`google-my-business`) requires a
+ * separate OAuth flow + its own quota / verification — different from Meta
+ * App Review. v1 path: agent generates the GBP post copy + image_brief,
+ * dispatcher records each post in dispatch-log.json with status
+ * "manual_required", and the operator copy-pastes into business.google.com
+ * (or schedules in the GBP web UI).
+ *
+ * Build a native GBP API client when we hit ~10 clients and the manual
+ * paste becomes the bottleneck.
+ */
+function dispatchGBPPostsManual(
   pack: GBPPosts,
-  options: DispatchOptions,
   alreadyDispatched: Set<string>,
-): Promise<DispatchLogEntry[]> {
+): DispatchLogEntry[] {
   const entries: DispatchLogEntry[] = [];
-  if (!options.outstandConnectionId) {
-    log.warn("dispatch.gbp.no-outstand", { hint: "Provide outstandConnectionId to dispatch GBP posts." });
-    return entries;
-  }
   for (const gbp of pack.gbp_posts) {
     const key = `${gbp.slot_id}:gbp`;
     if (alreadyDispatched.has(key)) {
@@ -317,52 +298,23 @@ async function dispatchGBPPosts(
         slot_id: gbp.slot_id,
         channel: "gbp",
         dispatched_at: Date.now(),
-        service: "outstand",
+        service: "operator-manual",
         external_id: "skipped-idempotent",
         cost_cents: 0,
         status: "skipped",
       });
       continue;
     }
-    try {
-      const gbpCta = gbp.cta_button && gbp.cta_url
-        ? {
-            button: gbp.cta_button as "ORDER" | "BOOK" | "CALL_NOW" | "LEARN_MORE" | "SIGN_UP",
-            url: gbp.cta_url,
-          }
-        : null;
-      const result = await outstandSchedulePost(
-        {
-          connectionId: options.outstandConnectionId,
-          channels: ["google_business_profile"],
-          scheduledFor: isoToUnixSeconds(gbp.scheduled_for),
-          caption: `${gbp.title}\n\n${gbp.body}`,
-          mediaUrls: gbp.media_url ? [gbp.media_url] : [],
-          ...(gbpCta ? { gbpCta } : {}),
-        },
-        { dryRun: options.dryRun },
-      );
-      entries.push({
-        slot_id: gbp.slot_id,
-        channel: "gbp",
-        dispatched_at: Date.now(),
-        service: "outstand",
-        external_id: result.id,
-        cost_cents: result.costCents,
-        status: "scheduled",
-      });
-    } catch (err) {
-      entries.push({
-        slot_id: gbp.slot_id,
-        channel: "gbp",
-        dispatched_at: Date.now(),
-        service: "outstand",
-        external_id: "error",
-        cost_cents: 0,
-        status: "failed",
-        error: err instanceof Error ? err.message : String(err),
-      });
-    }
+    entries.push({
+      slot_id: gbp.slot_id,
+      channel: "gbp",
+      dispatched_at: Date.now(),
+      service: "operator-manual",
+      external_id: "operator-paste",
+      cost_cents: 0,
+      status: "manual_required",
+      error: "GBP API client not built in v1. Operator pastes title + body into business.google.com — copy is ready in gbp-posts.json.",
+    });
   }
   return entries;
 }
@@ -540,7 +492,17 @@ export async function dispatchCampaign(options: DispatchOptions): Promise<Dispat
   const alreadyDispatched = new Set(
     (existingLog?.entries ?? [])
       .filter((e) => e.status === "scheduled" || e.status === "posted" || e.status === "submitted")
-      .map((e) => `${e.slot_id}:${e.channel.includes("gbp") ? "gbp" : e.channel.includes("email") ? "email" : e.channel.includes("reel") ? "reel" : "social"}`),
+      .map((e) => {
+        const c = e.channel;
+        const stem = c.includes("gbp")
+          ? "gbp"
+          : c.includes("email")
+          ? "email"
+          : c.includes("reel")
+          ? "reel"
+          : "social";
+        return `${e.slot_id}:${stem}`;
+      }),
   );
 
   const social = await readJsonOrNull<SocialCalendar>(path.join(dir, "social-calendar.json"));
@@ -555,7 +517,7 @@ export async function dispatchCampaign(options: DispatchOptions): Promise<Dispat
     clientId,
     month,
     dryRun: options.dryRun,
-    socialChannel: options.socialChannel,
+    metaCredsConfigured: metaCredsConfigured(),
     hasSocial: social !== null,
     hasGbp: gbp !== null,
     hasEmail: email !== null,
@@ -564,7 +526,7 @@ export async function dispatchCampaign(options: DispatchOptions): Promise<Dispat
 
   const entries: DispatchLogEntry[] = [];
   if (social) entries.push(...(await dispatchSocialCalendar(social, options, alreadyDispatched)));
-  if (gbp) entries.push(...(await dispatchGBPPosts(gbp, options, alreadyDispatched)));
+  if (gbp) entries.push(...dispatchGBPPostsManual(gbp, alreadyDispatched));
   if (email) entries.push(...(await dispatchEmail(email, options, alreadyDispatched)));
   if (reel) entries.push(...(await dispatchReel(reel, options, alreadyDispatched)));
 
@@ -584,6 +546,9 @@ export async function dispatchCampaign(options: DispatchOptions): Promise<Dispat
     clientId,
     month,
     entries: entries.length,
+    scheduled: entries.filter((e) => e.status === "scheduled" || e.status === "posted" || e.status === "submitted").length,
+    failed: entries.filter((e) => e.status === "failed").length,
+    manualRequired: entries.filter((e) => e.status === "manual_required").length,
     totalCostCents: dispatchLog.total_cost_cents,
   });
   return dispatchLog;
