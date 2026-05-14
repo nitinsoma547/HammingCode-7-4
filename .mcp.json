@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "meta": {
+      "command": "npx",
+      "args": ["-y", "@oliverames/meta-mcp-server"],
+      "env": {
+        "META_PAGE_ACCESS_TOKEN": "${META_PAGE_ACCESS_TOKEN}",
+        "META_FB_PAGE_ID": "${META_FB_PAGE_ID}",
+        "META_IG_USER_ID": "${META_IG_USER_ID}",
+        "META_GRAPH_API_VERSION": "${META_GRAPH_API_VERSION:-v21.0}"
+      }
+    }
+  }
+}

@@ -54,7 +54,8 @@ and idiomatic English for the diaspora audience. Do not default to generic
 | Layer            | Choice                                  | Notes |
 |------------------|-----------------------------------------|-------|
 | Content gen      | Claude Haiku via Anthropic SDK          | `claude-haiku-4-5-20251001` |
-| Social posting   | Outstand (FB / IG / GBP)                | $0.01 / post, no monthly fee |
+| Social posting   | Meta Graph API direct (`api/src/services/meta/`) | FB Pages + IG Business; Outstand as fallback during Meta App Review |
+| Social posting (fallback) | Outstand (FB / IG / GBP)       | $0.01 / post, no monthly fee — used while Meta App Review pending |
 | Video            | FAL.AI → Kling 3.0 (image-to-video)     | ~$0.50 / clip |
 | Email            | Resend                                  | Free tier |
 | Backend          | Node.js (TypeScript) on Railway         | Same provider as QuikRecap |
@@ -68,8 +69,11 @@ and idiomatic English for the diaspora audience. Do not default to generic
 - **Haiku, not Sonnet/Opus:** Per-client content costs must stay <$1/month of
   inference. Use Sonnet only if Haiku output for a specific generator (e.g.
   cultural campaign hooks) fails QA — and gate it behind config.
-- **Outstand over Buffer/Hootsuite:** No monthly fee, pay-per-post matches the
-  unit economics. Do not migrate without justification.
+- **Meta Graph API direct, not just Outstand:** owning the integration removes
+  per-post fees, ToS-restriction risk at scale, and middleman ratelimits.
+  Requires Meta App Review (4–6 weeks per their May 2026 docs) for
+  `instagram_content_publish` + `pages_manage_posts`. Outstand stays wired as
+  a fallback path so we can ship before App Review approves.
 - **Image-to-video, not text-to-video:** Clients send real photos via
   WhatsApp; we animate them. Avoids the "AI slop" look that hurts trust with
   this audience.
@@ -219,8 +223,19 @@ When building any generator in `api/src/services/claude/`:
 
 ## 9. Integration Notes
 
-- **Outstand:** Per-post billing. Batch sends so one campaign isn't 30 API
-  calls if it can be one. Store the returned post id on `campaign_assets`.
+- **Meta Graph API (`api/src/services/meta/`):** Direct Facebook Pages + Instagram
+  Business publishing. Requires Meta App Review for `instagram_content_publish`
+  and `pages_manage_posts` (4–6 weeks per Meta's May 2026 docs). Per-client
+  Page Access Tokens stored in Supabase `clients` table. Rate limit: 200
+  API calls / hour / IG account. Pin Graph API version (default v21.0) and
+  bump deliberately. Token refresh job pings `/me` weekly per client. See
+  `api/src/services/meta/META_SETUP.md` for the App Review walkthrough.
+- **Meta MCP server** (`.mcp.json` → `meta`): community MCP server wired for
+  dev-time tool invocations from Claude Code. Production cron uses the
+  TypeScript client in `api/src/services/meta/`, not the MCP server.
+- **Outstand (fallback):** Per-post billing. Used while Meta App Review is
+  pending. Batch sends so one campaign isn't 30 API calls if it can be one.
+  Store the returned post id on `campaign_assets`. Drop once Meta is live.
 - **FAL.AI Kling 3.0:** Image-to-video, ~$0.50 per clip. Cap at 1 Reel per
   client per month in v1 to keep COGS predictable. The image picker chooses
   the best photo from `monthly_intakes.photo_urls` via a Haiku call.
@@ -245,6 +260,19 @@ When building any generator in `api/src/services/claude/`:
   kling-image-to-video-prompt, flyer-spec-1080x1350, review-response-positive,
   review-response-negative, local-seo-audit, nextjs-client-site-scaffold.
   See §15.
+- Aditi's Kitchen + Aditi's Spice Depot Next.js 15 marketing sites
+  under `clients/aditis/<brand>/site/` — both build clean, ~106 kB
+  First Load JS, Source Serif 4 + Inter, per-brand palette + cultural
+  accent. Shared `design/` source-of-truth at repo root.
+- ChefScape Leesburg May 2026 full campaign pack under
+  `clients/chefscape/` — demo run showing the team flexes to a
+  non-desi client via `brand_profile` configuration alone.
+- `api/` backend scaffold with Meta Graph API client
+  (`api/src/services/meta/`) — typed FB Pages + IG Business publishing,
+  dry-run smoke test, typecheck clean. Awaits Meta App Review
+  (4–6 weeks) before posting to real client pages.
+- `.mcp.json` wires the Meta community MCP server (oliverames/meta-mcp-server)
+  for dev-time tool invocations from Claude Code.
 
 **Built (lives outside this repo, port in as needed):**
 

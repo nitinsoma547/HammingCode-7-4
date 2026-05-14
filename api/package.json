@@ -1,0 +1,25 @@
+{
+  "name": "@thebusiness/api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Backend for The Business — runs the monthly campaign generation + scheduling cron.",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "test:meta-post": "tsx src/scripts/test-meta-post.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "tsx": "^4",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
