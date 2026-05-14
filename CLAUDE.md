@@ -107,6 +107,13 @@ Anything that can't be fully automated (WhatsApp, some GBP edge cases) is
 ```
 /
 ├── CLAUDE.md                 # this file
+├── .claude/
+│   ├── agents/               # 12 marketing-team subagents (see §14)
+│   └── skills/               # 9 reusable playbooks (see §15)
+├── design/                   # shared design system for client sites
+│   ├── tokens.ts             # color scales, spacing, radii
+│   ├── fonts.ts              # next/font setup (Source Serif 4 + Inter)
+│   └── components/           # Hero, MenuSection, LocationCard, etc.
 ├── api/                      # Node.js + TS backend (Railway)
 │   ├── src/
 │   │   ├── routes/           # HTTP endpoints (webhooks, internal admin)
@@ -127,12 +134,19 @@ Anything that can't be fully automated (WhatsApp, some GBP edge cases) is
 │   ├── dying_business_scraper.py
 │   ├── social_checker.py
 │   └── requirements.txt
-├── clients/                  # per-client deliverables (websites, flyers,
-│   │                         # content packs)
+├── clients/                  # per-client deliverables
 │   └── aditis/
-│       ├── spice-depot/      # website v2, flyer, content pack
-│       └── kitchen/          # website v2, dosa flyer, content pack
-└── web/                      # React frontend — DEFERRED, do not build yet
+│       ├── spice-depot/
+│       │   ├── site/         # Next.js 15 marketing site
+│       │   ├── assets/       # flyers, IG graphics by month
+│       │   ├── campaigns/    # monthly content packs (JSON)
+│       │   └── seo-audit.md
+│       └── kitchen/
+│           ├── site/
+│           ├── assets/
+│           ├── campaigns/
+│           └── seo-audit.md
+└── web/                      # Agency's own site — DEFERRED until 5 clients
 ```
 
 Add directories only when the first file inside is being written. Empty
@@ -218,7 +232,19 @@ When building any generator in `api/src/services/claude/`:
 
 ---
 
-## 10. Status (as of 2026-05-13)
+## 10. Status (as of 2026-05-14)
+
+**Built in this repo:**
+
+- Full agent team in `.claude/agents/` — 12 subagents covering brand
+  strategy, website dev, social planning, GBP/local SEO, email,
+  flyers/IG graphics, Reel production, review responses, lead gen,
+  voice review, integration scaffolding, cultural calendar. See §14.
+- Reusable skills in `.claude/skills/` — 9 playbooks any agent invokes:
+  desi-diaspora-voice, whatsapp-broadcast-copy, monthly-content-calendar,
+  kling-image-to-video-prompt, flyer-spec-1080x1350, review-response-positive,
+  review-response-negative, local-seo-audit, nextjs-client-site-scaffold.
+  See §15.
 
 **Built (lives outside this repo, port in as needed):**
 
@@ -235,15 +261,19 @@ When building any generator in `api/src/services/claude/`:
   campaign generator, Taj Bites fake-company demo.
 - `dying_business_scraper.py` and `social_checker.py` (local).
 
-**Not yet in this repo:** any of the above. They get ported into `clients/`
-and `scrapers/` once the Ravi meeting confirms direction.
+**Rebuild plan (Saturday meeting, May 16):** redo Aditi's Spice Depot
+and Aditi's Kitchen websites in the Claude.ai design language — warm
+offwhite + Source Serif 4 + Inter, per-client palette accent (Kerala
+green for Kitchen, saffron for Spice Depot), subtle cultural accents
+(banana-leaf, rangoli, Devanagari sub-label). Use `website-developer`
+agent + `nextjs-client-site-scaffold` skill.
 
 **Not built:** any backend code. The first session that picks this up should
 scaffold `api/` and `db/migrations/` per Sections 5–6.
 
-**Saturday meeting deliverable (Ravi Marri):** show both website demos +
-both flyers + social content pack. Pitch: $497/mo, $149 setup, month 1
-free for Aditi as proof of concept.
+**Saturday meeting deliverable (Ravi Marri):** show both Claude-style
+website demos + both flyers + social content pack. Pitch: $497/mo,
+$149 setup, month 1 free for Aditi as proof of concept.
 
 ---
 
@@ -301,19 +331,104 @@ swap to a fork or community alternative without operator approval.
 
 ## 14. Claude Code Subagents (this repo)
 
-Three subagents live in `.claude/agents/`. Invoke them via the `Agent`
+12 subagents live in `.claude/agents/`. Invoke them via the `Agent`
 tool by name, or let Claude Code dispatch automatically based on the
-agent's `description`.
+agent's `description`. Architecture follows the orchestrator-workers
+pattern from Anthropic's claude-cookbooks — the operator (you, the
+human) is the orchestrator; each agent is a specialist worker. The
+future `api/src/services/campaign-generator` will read these same
+agent definitions to run automated monthly campaigns at runtime.
 
-- **`brand-voice-reviewer`** (sonnet) — QA pass on any generated asset
-  against the client's `brand_profile`. Run before scheduling to
-  Outstand / Resend / FAL.AI.
+### Marketing-team org chart
+
+**Foundation (run once per client at onboarding):**
+
+- **`brand-strategist`** (sonnet) — owns the `brand_profiles` row.
+  Reads the 7-section onboarding form and produces tone_keywords,
+  do_not_say, signature items, cultural hooks, visual palette,
+  locations. Upstream of every downstream agent.
+- **`gbp-and-local-seo`** (sonnet) — initial GBP audit, NAP
+  consistency check, schema spec, keyword baseline. Also runs the
+  monthly GBP post pack — see "Monthly".
+
+**Build (run once per client, then on refresh):**
+
+- **`website-developer`** (sonnet) — scaffolds + maintains client
+  Next.js 15 marketing sites under `clients/<slug>/site/`. Uses
+  the `nextjs-client-site-scaffold` skill.
+
+**Monthly (run on the campaign cycle):**
+
+- **`cultural-calendar`** (haiku) — festival hooks for the month.
+  Call this FIRST, before any content-generating agent.
+- **`social-media-planner`** (haiku) — owns the 30-day FB/IG/GBP
+  calendar + writes the captions. Uses `monthly-content-calendar`,
+  `desi-diaspora-voice` skills.
+- **`email-marketer`** (haiku) — writes the single monthly Resend
+  blast (subject, preheader, body, CTA, plain-text fallback).
+- **`visual-designer`** (sonnet) — produces flyer / IG graphic /
+  story / email-header HTML→PNG specs. Uses `flyer-spec-1080x1350`.
+- **`video-producer`** (sonnet) — one Reel per client per month.
+  Picks the photo, writes the Kling 3.0 image-to-video prompt + the
+  Reel caption. Uses `kling-image-to-video-prompt`.
+- **`gbp-and-local-seo`** (sonnet, monthly mode) — drafts the GBP
+  post pack and updates schema/citations.
+
+**Reactive (run as triggers fire):**
+
+- **`reputation-manager`** (haiku) — drafts review responses
+  (positive + negative). Uses `review-response-positive` and
+  `review-response-negative` skills. Never auto-publishes.
+
+**Acquisition (operator-driven):**
+
+- **`lead-gen-specialist`** (sonnet) — drives the Python scrapers,
+  scores leads, drafts the 2-3 sentence outreach script.
+
+**QA gate (run last on every generated asset):**
+
+- **`brand-voice-reviewer`** (sonnet) — pass/fail check against
+  `brand_profile`. Runs BEFORE assets ship to Outstand / Resend /
+  FAL.AI.
+
+**Infra (operator-driven, not part of campaign loop):**
+
 - **`integration-builder`** (sonnet) — scaffolds typed API clients
-  under `api/src/services/<name>/` with consistent error handling,
-  env-var loading, and cost tracking. Knows the locked-stack rules.
-- **`cultural-calendar`** (haiku) — returns festival hooks with dates
-  and per-category copy angles for a given month. Call at the top of
-  every monthly campaign generation, before prompts are constructed.
+  under `api/src/services/<name>/`.
 
-When adding a fourth subagent, document it here and explain why an
-existing one couldn't cover the use case.
+### Rules for adding a 13th subagent
+
+Document it here and explain why an existing one couldn't cover the
+use case. Prefer adding a `Skill` (see §15) over a new agent when the
+work is a reusable playbook rather than a distinct role.
+
+---
+
+## 15. Claude Code Skills (this repo)
+
+9 reusable playbooks live in `.claude/skills/<name>/SKILL.md`. Any
+agent (or the main session) can invoke them via the `Skill` tool by
+name (`/skill-name` from the user's side; via Skill tool from
+Claude's side). Skills exist because the same playbook applies across
+multiple agents — e.g., `desi-diaspora-voice` is read by every
+writing agent.
+
+| Skill                            | Used by                          |
+|----------------------------------|----------------------------------|
+| `desi-diaspora-voice`            | every writing agent              |
+| `whatsapp-broadcast-copy`        | social-media-planner (semi-manual handoff) |
+| `monthly-content-calendar`       | social-media-planner             |
+| `kling-image-to-video-prompt`    | video-producer                   |
+| `flyer-spec-1080x1350`           | visual-designer                  |
+| `review-response-positive`       | reputation-manager               |
+| `review-response-negative`       | reputation-manager               |
+| `local-seo-audit`                | gbp-and-local-seo                |
+| `nextjs-client-site-scaffold`    | website-developer                |
+
+### Rules for adding a 10th skill
+
+A new skill makes sense when the same playbook is referenced by ≥2
+agents, OR when the playbook is intricate enough that inlining it in
+an agent's body would bloat the agent prompt past ~250 lines. A skill
+is NOT a substitute for an agent — agents have a `model:`, a tool
+allowlist, and a role; skills are pure instructions.
