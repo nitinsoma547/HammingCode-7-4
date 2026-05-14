@@ -12,9 +12,11 @@
     "test:meta-post": "tsx src/scripts/test-meta-post.ts",
     "dispatch:chefscape": "tsx src/scripts/dispatch-chefscape-may.ts",
     "dispatch:aditis-kitchen": "tsx src/scripts/dispatch-aditis-kitchen-may.ts",
-    "dispatch:aditis-spice-depot": "tsx src/scripts/dispatch-aditis-spice-depot-may.ts"
+    "dispatch:aditis-spice-depot": "tsx src/scripts/dispatch-aditis-spice-depot-may.ts",
+    "generate:social-calendar": "tsx src/scripts/generate-social-calendar.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.96.0",
     "dotenv": "^16"
   },
   "devDependencies": {

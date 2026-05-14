@@ -280,6 +280,13 @@ When building any generator in `api/src/services/claude/`:
   `clients/chefscape/` — demo run showing the team flexes to a
   non-desi client via `brand_profile` configuration alone.
 - `api/` backend with the channel clients we own + the campaign dispatcher:
+  - `api/src/services/anthropic/` — Haiku agent-runner. Loads any
+    `.claude/agents/*.md`, strips YAML front matter, builds a prompt with
+    cache_control breakpoints on the agent prompt + brand profile (the
+    stable parts), and asks for structured JSON via `output_config.format`.
+    Records `costCents` + `cacheHitRate` per run. This is what makes the
+    agents runnable from production code — they no longer require a human
+    orchestrator in chat.
   - `api/src/services/meta/` — Graph API client (FB Pages + IG Business).
     Awaits Meta App Review before posting to real client pages.
   - `api/src/services/resend/` — monthly email blast (HTML + plain-text
