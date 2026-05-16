@@ -1,6 +1,6 @@
 {
   "name": "marketing-skills",
-  "description": "Marketing skills for AI agents — conversion optimization, copywriting, SEO, paid ads, ad creative, and growth",
+  "description": "A 10-role marketing team (CMO + specialists) plus 40 marketing skills — CRO, copywriting, SEO, paid ads, lifecycle, growth, product marketing, brand/social, and revops",
   "version": "1.9.0",
   "author": {
     "name": "Corey Haines"
@@ -8,5 +8,6 @@
   "homepage": "https://github.com/coreyhaines31/marketingskills",
   "repository": "https://github.com/coreyhaines31/marketingskills",
   "license": "MIT",
-  "skills": "./skills"
+  "skills": "./skills",
+  "agents": "./agents"
 }
